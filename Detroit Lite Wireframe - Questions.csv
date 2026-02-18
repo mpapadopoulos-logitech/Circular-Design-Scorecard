@@ -1,0 +1,27 @@
+Tool Version,0.0,,,,,,,,,,,,,,,,,,,,,,,,
+Tool Update Date,"February 17, 2026",,,,,,,,,,,,,,,,,,,,,,,,
+Latest Updater,Marcus Papadopoulos,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,BG,GAMING,,,,,,,,,,,,,,,,
+,,,,,,,,Portfolio,Gaming 3 Series,Gaming 3 Series,Gaming 3 Series,Gaming 5 Series,Gaming 5 Series,Gaming 5 Series,Gaming 9 Series,Gaming 9 Series,Gaming 9 Series,Gaming PRO Series,Gaming PRO Series,Gaming PRO Series,Gaming PRO Series,Gaming Simulation,Gaming Other,Gaming Other,Gaming Other
+,,,,,,,,Product Type,Mouse ,Keyboard,Headset,Mouse ,Keyboard,Headset,Mouse ,Keyboard,Headset,Mouse ,Keyboard,Headset,Controller,Simulation,Microphones,Mousepads,Other
+Question Identifier,Question,Question Subtitle,Question Category,"Worst Case 
+(+1 Point)","Business as Usual 
+(+3 Points)","Small Improvements 
+(+5 points)","Circular Success 
+(+7 Points)","Best in Class 
+(+10 Points)",,,,,,,,,,,,,,,,,
+Points Available ,,,,1,3,5,7,10,,,,,,,,,,,,,,,,,
+Number of Applicable Questions,,,,,,,,,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
+1,Battery Access,All Logitech products must focus on battery access to enable repair and recycling,Design for Disassembly,"No access, battery glued in (Example: Logitech Crayon)","Removed with damage, but still possible (Example: MX Master 3s)",Removed without damage,"1 Step removal, 1 Tool","1 Step Removal, No Tools",TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+2,Cable Access,"If your product does not have a battery, ensure that the cables can be replaced.",Design for Disassembly,t1.1,t1.2,t1.3,t1.4,All cables removable from both sides with standard connector type,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+3,Test 3,T3,Design for Disassembly,t3.1,t3.2,t3.3,t3.4,t3.5,TRUE,TRUE,TRUE,,,,,,,,,,,,,,
+4,Test 5,T5,Design for Disassembly,t5.1,t5.2,t5.3,t5.4,t5.5,,,,TRUE,TRUE,TRUE,,,,,,,,,,,
+5,Test 9,T9,Design for Disassembly,t9.1,t9.2,t9.3,t9.4,t9.5,,,,,,,TRUE,TRUE,TRUE,,,,,,,,
+6,Test PRO,TP,Design for Disassembly,tp.1,tp.2,tp.3,tp.4,tp.5,,,,,,,,,,TRUE,TRUE,TRUE,,,,,
+7,Test ALL,TA,Design for Disassembly,ta.1,ta.2,ta.3,ta.4,ta.5,,,,,,,,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE
+11,T11,T11.Subtitle,Design for Disassembly,1,3,5,7,10,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+12,T12,T12.Subtitle,Design for Disassembly,1,3,5,7,10,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+13,T13,T13.Subtitle,Design for Disassembly,1,3,5,7,10,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+14,T14,T14.Subtitle,Design for Disassembly,1,3,5,7,10,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+15,T15,T15.Subtitle,Design for Disassembly,1,3,5,7,10,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+16,T16,T16.Subtitle,Design for Disassembly,1,3,5,7,10,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
