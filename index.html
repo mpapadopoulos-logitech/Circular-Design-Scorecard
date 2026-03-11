@@ -254,6 +254,26 @@
         </div>
     </div>
 
+    <!-- CONFIRMATION MODAL -->
+    <div id="confirmModal" class="fixed inset-0 bg-[#1B1B1B]/80 z-[300] flex items-center justify-center backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
+        <div class="bg-white rounded-[24px] p-6 w-[90%] max-w-sm shadow-2xl transform scale-95 transition-transform duration-200" id="confirmModalContent">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                    </div>
+                    <h3 class="font-black tracking-tight text-red-600 uppercase" id="confirmModalTitle">Confirm</h3>
+                </div>
+                <button onclick="closeConfirmModal()" class="text-[#1B1B1B]/40 hover:text-[#1B1B1B] transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <p class="text-sm text-[#1B1B1B]/70 mb-6 font-medium leading-relaxed" id="confirmModalDesc">Are you sure?</p>
+            <div class="flex justify-end gap-3">
+                <button onclick="closeConfirmModal()" class="py-2.5 px-6 font-bold text-[#1B1B1B]/60 hover:bg-[#F3F1EC] rounded-xl text-[10px] uppercase tracking-widest transition-all">Cancel</button>
+                <button id="confirmActionBtn" class="py-2.5 px-6 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 text-[10px] uppercase tracking-widest transition-all shadow-md">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- CONSTANTS & CONFIG ---
         const CSV_URL = 'https://raw.githubusercontent.com/mpapadopoulos-logitech/Circular-Design-Scorecard/refs/heads/main/Detroit%20Lite%20Wireframe%20-%20Questions.csv';
@@ -286,6 +306,15 @@
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             fetchAndParseCSV();
+            
+            // Global click listener to close info tooltips
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('button[onclick^="toggleInfo"]')) {
+                    document.querySelectorAll('[id^="info-"]').forEach(box => {
+                        box.classList.add('hidden');
+                    });
+                }
+            });
         });
 
         async function fetchAndParseCSV() {
@@ -454,7 +483,7 @@
             const statusSetup = document.getElementById('statusSetup');
             if (isSetupComplete) {
                 statusSetup.classList.remove('text-transparent', 'border', 'border-[#EEEEEE]');
-                statusSetup.classList.add('text-[#00FDCF]', 'bg-[#0D3A38]', 'border-none');
+                statusSetup.classList.add('text-[#0D3A38]', 'border-none');
                 
                 document.getElementById('setupWarning').style.display = 'none';
                 document.getElementById('matrixArea').style.display = 'block';
@@ -462,7 +491,7 @@
                 calculateActiveQuestions();
             } else {
                 statusSetup.classList.add('text-transparent', 'border', 'border-[#EEEEEE]');
-                statusSetup.classList.remove('text-[#00FDCF]', 'bg-[#0D3A38]', 'border-none');
+                statusSetup.classList.remove('text-[#0D3A38]', 'border-none');
                 
                 document.getElementById('setupWarning').style.display = 'flex';
                 document.getElementById('matrixArea').style.display = 'none';
@@ -517,41 +546,74 @@
         }
 
         function handleClearAnswers() {
-            if(confirm("Are you sure you want to clear all your answers?")) {
-                state.answers = {};
-                renderQuestions();
-                updateUI();
-            }
+            showConfirmModal(
+                "Clear Answers", 
+                "Are you sure you want to clear all your answers? This cannot be undone.", 
+                function() {
+                    state.answers = {};
+                    renderQuestions();
+                    updateUI();
+                }
+            );
         }
 
         function handleClearSetup() {
-            if(confirm("Are you sure you want to clear the setup configuration?")) {
-                state.projectName = "";
-                state.gate = "";
-                state.date = "";
-                state.portfolio = "";
-                state.productType = "";
-                state.hasBattery = null;
-                
-                document.getElementById('setupProject').value = "";
-                document.getElementById('setupGate').value = "";
-                document.getElementById('setupDate').value = "";
-                document.getElementById('portfolioSelect').value = "";
-                
-                const tSelect = document.getElementById('productTypeSelect');
-                tSelect.innerHTML = '<option value="" disabled selected>Select Type</option>';
-                tSelect.disabled = true;
+            showConfirmModal(
+                "Clear Setup", 
+                "Are you sure you want to clear the setup configuration and all answers? This cannot be undone.", 
+                function() {
+                    state.projectName = "";
+                    state.gate = "";
+                    state.date = "";
+                    state.portfolio = "";
+                    state.productType = "";
+                    state.hasBattery = null;
+                    
+                    document.getElementById('setupProject').value = "";
+                    document.getElementById('setupGate').value = "";
+                    document.getElementById('setupDate').value = "";
+                    document.getElementById('portfolioSelect').value = "";
+                    
+                    const tSelect = document.getElementById('productTypeSelect');
+                    tSelect.innerHTML = '<option value="" disabled selected>Select Type</option>';
+                    tSelect.disabled = true;
 
-                document.getElementById('btnBatteryYes').className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]";
-                document.getElementById('btnBatteryNo').className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]";
-                
-                activeQuestions = [];
-                state.answers = {};
-                handleSetupChange();
+                    document.getElementById('btnBatteryYes').className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]";
+                    document.getElementById('btnBatteryNo').className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]";
+                    
+                    activeQuestions = [];
+                    state.answers = {};
+                    handleSetupChange();
+                }
+            );
+        }
+
+        function toggleInfo(e, id) {
+            e.stopPropagation();
+            const el = document.getElementById(id);
+            if (el) {
+                // Close all others first
+                document.querySelectorAll('[id^="info-"]').forEach(box => {
+                    if (box.id !== id) box.classList.add('hidden');
+                });
+                // Toggle clicked one
+                el.classList.toggle('hidden');
             }
         }
 
         // --- UI & RENDERING ---
+
+        function parseMarkdownLinks(text) {
+            if (!text || String(text).trim() === '') return '-';
+            const safeText = String(text);
+            // Matches [Link Text](https://example.com)
+            const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+            
+            // Replaces with an anchor tag. 
+            // currentColor inherits text color for light/dark mode compatibility.
+            // stopPropagation prevents the click from selecting the answer card.
+            return safeText.replace(linkRegex, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline decoration-[#00FDCF] decoration-2 hover:text-[#00FDCF] transition-colors font-bold" onclick="event.stopPropagation()">$1</a>');
+        }
 
         function updateUI() {
             const isSetupComplete = state.projectName && state.gate && state.date && state.portfolio && state.productType && (state.hasBattery !== null);
@@ -579,7 +641,7 @@
 
                 if (allAnswered) {
                     statusAnswers.classList.remove('text-transparent', 'border', 'border-[#EEEEEE]');
-                    statusAnswers.classList.add('text-[#00FDCF]', 'bg-[#0D3A38]', 'border-none');
+                    statusAnswers.classList.add('text-[#0D3A38]', 'border-none');
 
                     // Determine Grade from CSV achievements
                     let awardedLevel = null;
@@ -598,7 +660,7 @@
                             cardBg.className = "bg-[#0D3A38] rounded-[24px] p-6 text-center shadow-md relative overflow-hidden transition-all duration-500";
                             scoreEl.className = "text-display text-white transition-colors duration-500";
                             progressEl.className = "h-full rounded-full bg-[#00FDCF] shadow-[0_0_10px_#00FDCF] transition-all duration-700 ease-out";
-                            gradeEl.innerHTML = `GRADE <span class="font-normal text-[#00FDCF]/70">/ ${awardedLevel.name.toUpperCase()}</span>`;
+                            gradeEl.innerHTML = awardedLevel.name.toUpperCase();
                             gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-[#00FDCF]";
                             scoreTitle.className = "text-[10px] font-bold text-white/50 uppercase tracking-widest mb-3";
                             progressTxt.className = "mt-2 text-[9px] font-bold text-white/40 uppercase tracking-widest";
@@ -607,7 +669,7 @@
                             cardBg.className = "bg-[#D6F5F0] rounded-[24px] p-6 text-center border border-[#00FDCF] shadow-sm relative overflow-hidden transition-all duration-500";
                             scoreEl.className = "text-display text-[#0D3A38] transition-colors duration-500";
                             progressEl.className = "h-full rounded-full bg-[#00FDCF] shadow-[0_0_10px_#00FDCF] transition-all duration-700 ease-out";
-                            gradeEl.innerHTML = `GRADE <span class="font-normal opacity-50">/ ${awardedLevel.name.toUpperCase()}</span>`;
+                            gradeEl.innerHTML = awardedLevel.name.toUpperCase();
                             gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-[#0D3A38]";
                             scoreTitle.className = "text-[10px] font-bold text-[#0D3A38]/50 uppercase tracking-widest mb-3";
                             progressTxt.className = "mt-2 text-[9px] font-bold text-[#0D3A38]/50 uppercase tracking-widest";
@@ -616,7 +678,7 @@
                             cardBg.className = "bg-[#FFFBEB] rounded-[24px] p-6 text-center border border-yellow-200 shadow-sm relative overflow-hidden transition-all duration-500";
                             scoreEl.className = "text-display text-yellow-800 transition-colors duration-500";
                             progressEl.className = "h-full rounded-full bg-yellow-500 transition-all duration-700 ease-out";
-                            gradeEl.innerHTML = `GRADE <span class="font-normal opacity-50">/ ${awardedLevel.name.toUpperCase()}</span>`;
+                            gradeEl.innerHTML = awardedLevel.name.toUpperCase();
                             gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-yellow-800";
                             scoreTitle.className = "text-[10px] font-bold text-yellow-800/50 uppercase tracking-widest mb-3";
                             progressTxt.className = "mt-2 text-[9px] font-bold text-yellow-800/50 uppercase tracking-widest";
@@ -626,7 +688,7 @@
                         cardBg.className = "bg-[#FFF1F2] rounded-[24px] p-6 text-center border border-red-200 shadow-sm relative overflow-hidden transition-all duration-500";
                         scoreEl.className = "text-display text-red-600 transition-colors duration-500";
                         progressEl.className = "h-full rounded-full bg-red-500 transition-all duration-700 ease-out";
-                        gradeEl.innerHTML = `GRADE F <span class="font-normal opacity-50">/ FAILED TO MEET MINIMUMS</span>`;
+                        gradeEl.innerHTML = `GETTING STARTED`;
                         gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-red-600";
                         scoreTitle.className = "text-[10px] font-bold text-red-800/50 uppercase tracking-widest mb-3";
                         progressTxt.className = "mt-2 text-[9px] font-bold text-red-800/50 uppercase tracking-widest";
@@ -635,7 +697,7 @@
                 } else {
                     // In Progress
                     statusAnswers.classList.add('text-transparent', 'border', 'border-[#EEEEEE]');
-                    statusAnswers.classList.remove('text-[#00FDCF]', 'bg-[#0D3A38]', 'border-none');
+                    statusAnswers.classList.remove('text-[#0D3A38]', 'border-none');
 
                     cardBg.className = "bg-[#FAFAFA] rounded-[24px] p-6 text-center border border-[#EEEEEE] shadow-sm relative overflow-hidden transition-all duration-500";
                     scoreEl.className = "text-display text-[#1B1B1B] transition-colors duration-500";
@@ -658,15 +720,15 @@
                 progressTxt.className = "mt-2 text-[9px] font-bold text-[#1B1B1B]/40 uppercase tracking-widest";
                 
                 statusAnswers.classList.add('text-transparent', 'border', 'border-[#EEEEEE]');
-                statusAnswers.classList.remove('text-[#00FDCF]', 'bg-[#0D3A38]', 'border-none');
+                statusAnswers.classList.remove('text-[#0D3A38]', 'border-none');
             }
         }
 
         function renderGridHeader() {
             const h = document.getElementById('gridHeader');
             let cols = `
-                <div class="px-5 py-4 flex items-end justify-start border-r border-white/5">
-                    <span class="text-[9px] font-bold uppercase text-[#00FDCF] tracking-[0.2em]">Attribute Question</span>
+                <div class="px-5 py-4 flex items-start justify-start border-r border-white/5">
+                    <span class="text-[10px] font-bold uppercase text-[#00FDCF] tracking-[0.2em]">Attribute Question</span>
                 </div>
             `;
             
@@ -684,9 +746,9 @@
                 const bgClass = idx === 4 ? "bg-[#00FDCF]/5 hover:bg-[#00FDCF]/10" : "hover:bg-white/5";
                 
                 cols += `
-                    <div class="px-4 py-4 border-r border-white/5 flex flex-col justify-center group transition-colors ${bgClass}">
-                        <div class="text-[8px] font-bold uppercase text-white/90 tracking-widest mb-1 leading-tight">${title}</div>
-                        <div class="text-base font-black transition-colors ${colorClasses[idx]}">${pts} pts</div>
+                    <div class="px-4 py-4 border-r border-white/5 flex flex-col justify-start group transition-colors ${bgClass}">
+                        <div class="text-[10px] font-bold uppercase text-white/90 tracking-widest mb-1 leading-tight">${title}</div>
+                        <div class="text-lg font-black transition-colors mt-auto pt-2 ${colorClasses[idx]}">${pts} pts</div>
                     </div>
                 `;
             });
@@ -700,18 +762,31 @@
             activeQuestions.forEach(q => {
                 const currentAnswer = state.answers[q.id];
                 
+                // Parse markdown links for titles and subtitles
+                const formattedQuestion = parseMarkdownLinks(q.question);
+                const formattedSubtitle = parseMarkdownLinks(q.subtitle);
+                
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-[24px] shadow-sm border border-[#EEEEEE] overflow-hidden group hover:border-[#00FDCF]/30 hover:shadow-md transition-all duration-300";
+                // Removed overflow-hidden so the pop-out info box can float freely
+                card.className = "bg-white rounded-[24px] shadow-sm border border-[#EEEEEE] group hover:border-[#00FDCF]/30 hover:shadow-md transition-all duration-300 relative";
 
                 const mobileHeader = `
-                    <div class="lg:hidden px-6 py-4 border-b border-[#EEEEEE] bg-white">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="bg-[#F3F1EC] text-[#0D3A38] text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-[#EEEEEE]">
-                                <span class="opacity-50 mr-1">${q.id}</span> ${q.category}
-                            </span>
+                    <div class="lg:hidden px-6 py-4 border-b border-[#EEEEEE] bg-white rounded-t-[24px]">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-[10px] font-mono text-[#1B1B1B]/50 bg-[#FAFAFA] border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.id}</span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0D3A38]/50 bg-[#FAFAFA] border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.category}</span>
                         </div>
-                        <h3 class="font-bold text-[#1B1B1B] text-base leading-tight">${q.question}</h3>
-                        <p class="text-[10px] text-[#1B1B1B]/60 mt-1 leading-relaxed font-medium">${q.subtitle}</p>
+                        <div class="flex items-start justify-between gap-3 relative">
+                            <h3 class="font-bold text-[#1B1B1B] text-lg leading-tight">${formattedQuestion}</h3>
+                            <button onclick="toggleInfo(event, 'info-mobile-${q.id}')" class="text-[#1B1B1B]/30 hover:text-[#00FDCF] transition-colors shrink-0 mt-0.5" title="More Info">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                            </button>
+                            <!-- Pop-out box -->
+                            <div id="info-mobile-${q.id}" class="hidden absolute z-[100] right-0 top-full mt-2 w-64 p-4 bg-[#1B1B1B] text-white shadow-2xl border border-[#0D3A38] rounded-xl">
+                                <div class="absolute -top-1.5 right-2 w-3 h-3 bg-[#1B1B1B] border-l border-t border-[#0D3A38] rotate-45"></div>
+                                <p class="text-xs leading-relaxed font-medium relative z-10">${formattedSubtitle}</p>
+                            </div>
+                        </div>
                     </div>
                 `;
 
@@ -719,12 +794,24 @@
                 gridDiv.className = "grid grid-cols-1 lg:grid-cols-[20%_repeat(5,1fr)] min-h-[110px]";
 
                 const questionCol = `
-                    <div class="hidden lg:flex px-5 py-4 flex-col justify-center border-r border-[#EEEEEE] bg-[#FAFAFA]/50 relative">
-                        <span class="inline-block self-start mb-2 mt-2 text-[8px] font-bold uppercase tracking-[0.2em] text-[#0D3A38]/50 bg-white border border-[#EEEEEE] px-2 py-1 rounded-md">
-                            <span class="opacity-50 mr-1">${q.id}</span> ${q.category}
-                        </span>
-                        <h3 class="font-bold text-[#1B1B1B] text-sm leading-tight tracking-tight">${q.question}</h3>
-                        <p class="text-[9px] text-[#1B1B1B]/60 mt-1.5 leading-relaxed font-medium">${q.subtitle}</p>
+                    <div class="hidden lg:flex px-5 py-4 flex-col justify-start border-r border-[#EEEEEE] bg-[#FAFAFA]/50 relative rounded-l-[24px]">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="text-[10px] font-mono text-[#1B1B1B]/50 bg-white border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.id}</span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0D3A38]/50 bg-white border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.category}</span>
+                        </div>
+                        <div class="flex items-start justify-between gap-3 mt-1">
+                            <h3 class="font-bold text-[#1B1B1B] text-base leading-tight tracking-tight">${formattedQuestion}</h3>
+                            <div class="relative static-popout-container">
+                                <button onclick="toggleInfo(event, 'info-desktop-${q.id}')" class="text-[#1B1B1B]/30 hover:text-[#00FDCF] transition-colors shrink-0 mt-0.5" title="More Info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                                </button>
+                                <!-- Pop-out box -->
+                                <div id="info-desktop-${q.id}" class="hidden absolute z-[100] left-0 top-full mt-2 w-64 p-4 bg-[#1B1B1B] text-white shadow-2xl border border-[#0D3A38] rounded-xl">
+                                    <div class="absolute -top-1.5 left-1.5 w-3 h-3 bg-[#1B1B1B] border-l border-t border-[#0D3A38] rotate-45"></div>
+                                    <p class="text-xs leading-relaxed font-medium relative z-10">${formattedSubtitle}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 `;
 
@@ -734,53 +821,47 @@
                     const isSelected = currentAnswer === points;
                     
                     let activeClass = "";
-                    let barColor = "";
-                    let fontClass = "text-[#1B1B1B]/60 font-medium";
-                    let roundedClass = (idx === 4) ? "lg:rounded-tr-[24px] lg:rounded-br-[24px]" : "";
+                    let fontClass = "text-[#1B1B1B]/60";
+                    let roundedClass = (idx === 4) ? "lg:rounded-r-[24px]" : "";
 
                     // Sequential ramping colors (1 -> 10)
+                    // Note: We use a text-shadow trick instead of font-bold to completely prevent text layout shifts
                     if (idx === 0) { // 1 pt (Worst)
                         if(isSelected) {
                             activeClass = "bg-[#FEF2F2] ring-inset ring-2 ring-red-500 z-10";
-                            barColor = "bg-red-500";
-                            fontClass = "text-red-900 font-bold";
+                            fontClass = "text-red-700 [text-shadow:0_0_0.3px_currentColor]";
                         }
                     } else if (idx === 1) { // 3 pts
                         if(isSelected) {
                             activeClass = "bg-[#FFF7ED] ring-inset ring-2 ring-orange-500 z-10";
-                            barColor = "bg-orange-500";
-                            fontClass = "text-orange-900 font-bold";
+                            fontClass = "text-orange-700 [text-shadow:0_0_0.3px_currentColor]";
                         }
                     } else if (idx === 2) { // 5 pts
                         if(isSelected) {
                             activeClass = "bg-[#FFFBEB] ring-inset ring-2 ring-yellow-500 z-10";
-                            barColor = "bg-yellow-500";
-                            fontClass = "text-yellow-900 font-bold";
+                            fontClass = "text-yellow-700 [text-shadow:0_0_0.3px_currentColor]";
                         }
                     } else if (idx === 3) { // 7 pts
                         if(isSelected) {
                             activeClass = "bg-[#F0FDF4] ring-inset ring-2 ring-[#0D3A38] z-10";
-                            barColor = "bg-[#0D3A38]";
-                            fontClass = "text-[#0D3A38] font-bold";
+                            fontClass = "text-[#0D3A38] [text-shadow:0_0_0.3px_currentColor]";
                         }
                     } else { // 10 pts (Best)
                         if(isSelected) {
                             activeClass = "bg-[#F0FDFA] ring-inset ring-2 ring-[#00FDCF] z-10";
-                            barColor = "bg-[#00FDCF]";
-                            fontClass = "text-[#0D3A38] font-bold";
+                            fontClass = "text-[#0D3A38] [text-shadow:0_0_0.3px_currentColor]"; 
                         }
                     }
-
-                    const topBar = `<div class="absolute top-0 left-0 right-0 h-1 transition-all duration-300 ${isSelected ? barColor : 'bg-transparent'}"></div>`;
+                    
+                    const formattedOpt = parseMarkdownLinks(opt);
                     
                     optionsHTML += `
                         <div 
                             onclick="handleAnswer('${q.id}', ${points})"
-                            class="relative px-4 py-4 cursor-pointer transition-all duration-200 border-b lg:border-b-0 border-[#EEEEEE] last:border-b-0 lg:border-r lg:last:border-r-0 hover:bg-[#FAFAFA] flex flex-col justify-center ${roundedClass} ${isSelected ? activeClass : 'opacity-80 hover:opacity-100'}"
+                            class="relative px-5 py-5 cursor-pointer transition-all duration-200 border-b lg:border-b-0 border-[#EEEEEE] last:border-b-0 lg:border-r lg:last:border-r-0 hover:bg-[#FAFAFA] flex flex-col justify-start ${roundedClass} ${isSelected ? activeClass : 'opacity-80 hover:opacity-100'}"
                         >
-                            ${topBar}
                             <div class="flex flex-row lg:flex-col items-center lg:items-start h-full">
-                                <p class="text-[11px] leading-snug ${fontClass}">${opt || '-'}</p>
+                                <p class="text-[13px] leading-snug font-medium transition-all duration-200 ${fontClass}">${formattedOpt}</p>
                             </div>
                         </div>
                     `;
@@ -949,6 +1030,36 @@
         function closeModal() {
             const modal = document.getElementById('dataModal');
             const content = document.getElementById('dataModalContent');
+            modal.classList.add('opacity-0');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        function showConfirmModal(title, desc, actionCallback) {
+            document.getElementById('confirmModalTitle').innerText = title;
+            document.getElementById('confirmModalDesc').innerText = desc;
+            
+            const btn = document.getElementById('confirmActionBtn');
+            btn.onclick = function() {
+                actionCallback();
+                closeConfirmModal();
+            };
+
+            const modal = document.getElementById('confirmModal');
+            const content = document.getElementById('confirmModalContent');
+            modal.classList.remove('hidden');
+            // Trigger animation frame
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+            });
+        }
+
+        function closeConfirmModal() {
+            const modal = document.getElementById('confirmModal');
+            const content = document.getElementById('confirmModalContent');
             modal.classList.add('opacity-0');
             content.classList.add('scale-95');
             setTimeout(() => {
