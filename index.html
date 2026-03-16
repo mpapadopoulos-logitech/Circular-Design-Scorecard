@@ -178,11 +178,15 @@
 
         <div class="p-4 border-t border-[#EEEEEE] bg-[#FAFAFA] mt-auto flex-shrink-0">
             <!-- Tool Metadata -->
-            <div class="text-[10px] text-[#1B1B1B]/60 uppercase tracking-widest font-semibold space-y-1.5">
+            <div class="text-[10px] text-[#1B1B1B]/60 uppercase tracking-widest font-semibold space-y-1.5 mb-3">
                 <p id="metaVersion">--</p>
                 <p id="metaDate">--</p>
                 <p id="metaAuthor">--</p>
             </div>
+            
+            <a href="https://docs.google.com/presentation/d/1OsaVu6E3HMgwom0-eMyfDrR7GBvXJE_9iiithz1Fz9c/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#0D3A38] uppercase tracking-widest font-bold hover:text-[#0D3A38]/70 transition-colors flex items-center gap-1.5 w-fit">
+                Submit Feedback <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
         </div>
     </aside>
 
@@ -1033,13 +1037,13 @@
                 // Apply pulse effect to the entire setup container
                 const setupContainer = document.getElementById('setupContainer');
                 if (setupContainer) {
-                    setupContainer.classList.add('ring-4', 'ring-[#00FDCF]/50', 'ring-offset-4', 'ring-offset-white');
+                    setupContainer.classList.add('ring-4', 'ring-[#00FDCF]/50', 'ring-offset-3', 'ring-offset-white');
                 }
                 
                 // Remove the glow after 1.5 seconds and THEN auto-focus
                 setTimeout(() => {
                     if (setupContainer) {
-                        setupContainer.classList.remove('ring-4', 'ring-[#00FDCF]/50', 'ring-offset-4', 'ring-offset-white');
+                        setupContainer.classList.remove('ring-4', 'ring-[#00FDCF]/50', 'ring-offset-3', 'ring-offset-white');
                     }
                     
                     // Focus the first input after the pulse disappears
