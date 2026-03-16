@@ -304,7 +304,7 @@
             meta: { version: '', date: '', author: '' },
             achievements: [], // { name, threshold }
             headers: [], // 5 titles
-            mapping: { portfoliosRow: [], productTypesRow: [] },
+            mapping: { portfoliosRow: [], productTypesRow: [], priorityPartsRow: [] },
             batteryYes: null, // question obj
             batteryNo: null,  // question obj
             standardQuestions: [] // array of question objs
@@ -316,6 +316,7 @@
             date: "",
             portfolio: "",
             productType: "",
+            priorityParts: "", // Extracted from row 11 dynamically
             hasBattery: null, // true/false
             answers: {} // map of questionId -> score
         };
@@ -372,6 +373,7 @@
 
             appData.mapping.portfoliosRow = rows[8] || [];
             appData.mapping.productTypesRow = rows[9] || [];
+            appData.mapping.priorityPartsRow = rows[10] || []; // Row 11 (0-indexed as 10)
 
             const hr = rows[11] || [];
             appData.headers = [hr[4], hr[5], hr[6], hr[7], hr[8]].map(s => s || 'N/A');
@@ -515,7 +517,13 @@
                 }
             }
 
-            if (targetCol === -1) return;
+            if (targetCol === -1) {
+                state.priorityParts = "";
+                return;
+            }
+
+            // Extract dynamic Priority Parts for this specific column
+            state.priorityParts = appData.mapping.priorityPartsRow[targetCol] || "";
 
             if (state.hasBattery === true && appData.batteryYes) {
                 activeQuestions.push(appData.batteryYes);
@@ -591,6 +599,25 @@
         }
 
         // --- UI & RENDERING ---
+
+        function applyPlaceholders(text) {
+            if (!text || String(text).trim() === '') return text;
+            let res = String(text);
+            
+            const pName = state.projectName || "[Project Name]";
+            const port = state.portfolio || "[Portfolio]";
+            const pType = state.productType || "[Product Type]";
+            const prioParts = state.priorityParts || "[Priority Parts]";
+
+            // Case-insensitive replacement of placeholders
+            // Priority Parts is replaced FIRST so any nested placeholders inside it get processed next
+            res = res.replace(/\{\{\s*Priority Parts\s*\}\}/gi, prioParts);
+            res = res.replace(/\{\{\s*ProjectName\s*\}\}/gi, pName);
+            res = res.replace(/\{\{\s*Portfolio\s*\}\}/gi, port);
+            res = res.replace(/\{\{\s*ProductType\s*\}\}/gi, pType);
+            
+            return res;
+        }
 
         function parseMarkdownLinks(text) {
             if (!text || String(text).trim() === '') return '-';
@@ -744,8 +771,12 @@
             activeQuestions.forEach(q => {
                 const currentAnswer = state.answers[q.id];
                 
-                const formattedQuestion = parseMarkdownLinks(q.question);
-                const formattedSubtitle = parseMarkdownLinks(q.subtitle);
+                // First apply dynamic text replacements, then parse markdown links
+                const rawQuestion = applyPlaceholders(q.question);
+                const rawSubtitle = applyPlaceholders(q.subtitle);
+
+                const formattedQuestion = parseMarkdownLinks(rawQuestion);
+                const formattedSubtitle = parseMarkdownLinks(rawSubtitle);
                 
                 const card = document.createElement('div');
                 card.className = "bg-white rounded-[24px] shadow-sm border border-[#EEEEEE] p-6 md:p-8 hover:border-[#0D3A38]/20 hover:shadow-md transition-all duration-300 relative";
@@ -782,7 +813,8 @@
                     else if (idx === 4) activeClass = "bg-[#00FDCF] border-[#0D3A38] text-[#0D3A38] shadow-sm transform scale-[1.01]";
 
                     const combinedClass = isSelected ? activeClass : baseClass;
-                    const formattedOpt = parseMarkdownLinks(opt);
+                    // Apply placeholders to options as well just in case!
+                    const formattedOpt = parseMarkdownLinks(applyPlaceholders(opt));
                     
                     optionsHTML += `
                         <div 
