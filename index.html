@@ -18,14 +18,14 @@
 
         /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #F3F1EC;
+            background: transparent;
         }
         ::-webkit-scrollbar-thumb {
             background: #D1D5DB;
-            border-radius: 3px;
+            border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #9CA3AF;
@@ -38,83 +38,83 @@
         .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 200ms, transform 200ms; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col md:flex-row relative">
+<body class="min-h-screen flex flex-col md:flex-row relative text-[#1B1B1B]">
 
     <!-- LOADING OVERLAY -->
     <div id="loadingOverlay" class="fixed inset-0 bg-[#F3F1EC] z-[100] flex flex-col items-center justify-center transition-opacity duration-500">
-        <div class="w-12 h-12 border-4 border-[#EEEEEE] border-t-[#00FDCF] rounded-full animate-spin mb-4"></div>
-        <p class="text-[#1B1B1B] font-bold tracking-widest uppercase text-xs">Loading Matrix Data...</p>
+        <div class="w-12 h-12 border-4 border-[#EEEEEE] border-t-[#0D3A38] rounded-full animate-spin mb-4"></div>
+        <p class="text-[#1B1B1B] font-bold tracking-widest uppercase text-sm">Loading Matrix Data...</p>
     </div>
 
     <!-- SIDEBAR -->
     <aside class="w-full md:w-80 flex-shrink-0 bg-white border-r border-[#EEEEEE] flex flex-col md:h-screen md:sticky md:top-0 z-30 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
         
         <!-- Header Section -->
-        <div class="p-6 border-b border-[#EEEEEE] flex-shrink-0 bg-white">
+        <div class="p-4 border-b border-[#EEEEEE] flex-shrink-0 bg-white">
             <div class="flex items-center gap-4 mb-2">
-                <div class="w-10 h-10 bg-[#00FDCF] rounded-full flex items-center justify-center text-[#0D3A38] shadow-[0_0_15px_rgba(0,253,207,0.4)]">
-                    <i data-lucide="rotate-ccw" class="w-5 h-5 stroke-[3px]"></i>
+                <div class="w-12 h-12 bg-[#0D3A38] rounded-full flex items-center justify-center text-white">
+                    <i data-lucide="refresh-cw" class="w-6 h-6 stroke-[3px]"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-black tracking-tight text-[#1B1B1B] uppercase leading-none">Logi <span class="font-light opacity-50">Circular</span></h1>
-                    <p class="text-[9px] text-[#00FDCF] font-bold uppercase tracking-[0.2em] mt-1">Scorecard Tool</p>
+                    <h1 class="text-xl font-black tracking-tight uppercase leading-none">Detroit <span class="font-light opacity-50">Lite</span></h1>
+                    <p class="text-[10px] text-[#0D3A38] font-bold uppercase tracking-[0.2em] mt-1">Circular Design Scorecard</p>
                 </div>
             </div>
         </div>
 
-        <div class="p-6 space-y-6 overflow-y-auto flex-1 bg-white">
+        <div class="p-4 space-y-4 overflow-y-auto flex-1 bg-white">
             <!-- Setup Inputs -->
-            <div class="space-y-4">
+            <div id="setupContainer" class="space-y-4 rounded-xl transition-all duration-500 p-2 -m-2">
                 
                 <!-- Open Fields -->
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-[#0D3A38]/60 mb-1.5">Project Name</label>
-                    <input type="text" id="setupProject" onchange="handleSetupChange()" placeholder="Enter project name..." class="w-full bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#00FDCF] transition-all placeholder:text-[#1B1B1B]/30">
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#0D3A38]/80 mb-2">Project Name</label>
+                    <input type="text" id="setupProject" onchange="handleSetupChange()" placeholder="Enter project name..." class="w-full bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2 px-4 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#0D3A38] transition-all placeholder:text-[#1B1B1B]/50">
                 </div>
                 
-                <div class="flex gap-3">
+                <div class="flex gap-4">
                     <div class="flex-1">
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-[#0D3A38]/60 mb-1.5">Gate</label>
-                        <input type="text" id="setupGate" onchange="handleSetupChange()" placeholder="e.g. V2" class="w-full bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#00FDCF] transition-all placeholder:text-[#1B1B1B]/30">
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#0D3A38]/80 mb-2">Gate</label>
+                        <input type="text" id="setupGate" onchange="handleSetupChange()" placeholder="e.g. V2" class="w-full bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2 px-4 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#0D3A38] transition-all placeholder:text-[#1B1B1B]/50">
                     </div>
                     <div class="flex-1">
-                        <label class="block text-[10px] font-bold uppercase tracking-widest text-[#0D3A38]/60 mb-1.5">Date</label>
-                        <input type="date" id="setupDate" onchange="handleSetupChange()" class="w-full bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2.5 px-3 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#00FDCF] transition-all">
+                        <label class="block text-xs font-bold uppercase tracking-widest text-[#0D3A38]/80 mb-2">Date</label>
+                        <input type="date" id="setupDate" onchange="handleSetupChange()" class="w-full bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2 px-4 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#0D3A38] transition-all text-[#1B1B1B]/80">
                     </div>
                 </div>
 
-                <hr class="border-[#EEEEEE] my-4" />
+                <hr class="border-[#EEEEEE] my-3" />
 
                 <!-- Matrix Routing Dropdowns -->
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-[#0D3A38]/60 mb-1.5">Portfolio</label>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#0D3A38]/80 mb-2">Portfolio</label>
                     <div class="relative">
-                        <select id="portfolioSelect" onchange="handlePortfolioChange()" class="w-full appearance-none bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2.5 px-4 pr-8 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#00FDCF] transition-all cursor-pointer">
+                        <select id="portfolioSelect" onchange="handlePortfolioChange()" class="w-full appearance-none bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2 px-4 pr-8 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#0D3A38] transition-all cursor-pointer">
                             <option value="" disabled selected>Select Portfolio</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#1B1B1B]/40">
-                            <i data-lucide="chevron-right" class="w-4 h-4 rotate-90 stroke-[3px]"></i>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#1B1B1B]/60">
+                            <i data-lucide="chevron-right" class="w-5 h-5 rotate-90 stroke-[3px]"></i>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-[#0D3A38]/60 mb-1.5">Product Type</label>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#0D3A38]/80 mb-2">Product Type</label>
                     <div class="relative">
-                        <select id="productTypeSelect" onchange="handleProductTypeChange()" disabled class="w-full appearance-none bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2.5 px-4 pr-8 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#00FDCF] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                        <select id="productTypeSelect" onchange="handleProductTypeChange()" disabled class="w-full appearance-none bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B] font-medium py-2 px-4 pr-8 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-[#0D3A38] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
                             <option value="" disabled selected>Select Type</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#1B1B1B]/40">
-                            <i data-lucide="chevron-right" class="w-4 h-4 rotate-90 stroke-[3px]"></i>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#1B1B1B]/60">
+                            <i data-lucide="chevron-right" class="w-5 h-5 rotate-90 stroke-[3px]"></i>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-[#0D3A38]/60 mb-1.5">Has Battery?</label>
-                    <div class="flex gap-2 bg-[#F3F1EC] p-1 rounded-xl border border-[#EEEEEE]">
-                        <button id="btnBatteryYes" onclick="setBattery(true)" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]">YES</button>
-                        <button id="btnBatteryNo" onclick="setBattery(false)" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]">NO</button>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-[#0D3A38]/80 mb-2">Has Battery?</label>
+                    <div id="batteryGroup" class="flex gap-2 bg-[#F3F1EC] p-1 rounded-xl border border-[#EEEEEE] transition-all">
+                        <button id="btnBatteryYes" onclick="setBattery(true)" class="flex-1 py-1 text-sm font-bold rounded-lg transition-all border border-transparent text-[#1B1B1B]/70 hover:text-[#1B1B1B]">YES</button>
+                        <button id="btnBatteryNo" onclick="setBattery(false)" class="flex-1 py-1 text-sm font-bold rounded-lg transition-all border border-transparent text-[#1B1B1B]/70 hover:text-[#1B1B1B]">NO</button>
                     </div>
                 </div>
             </div>
@@ -125,59 +125,63 @@
             <div id="scoreCardBg" class="bg-[#FAFAFA] rounded-[24px] p-6 text-center border border-[#EEEEEE] shadow-sm relative overflow-hidden transition-all duration-500">
                 <div class="absolute -top-10 -right-10 w-24 h-24 bg-[#00FDCF]/10 rounded-full blur-2xl"></div>
                 
-                <h3 id="scoreCardTitle" class="text-[10px] font-bold text-[#0D3A38]/50 uppercase tracking-widest mb-3">Average Score</h3>
+                <h3 id="scoreCardTitle" class="text-[10px] font-bold text-[#0D3A38]/70 uppercase tracking-widest mb-1">Average Score</h3>
                 
                 <div class="flex items-baseline justify-center gap-1 mb-1">
                     <div id="scoreDisplay" class="text-display text-[#1B1B1B] transition-colors duration-500">0.0</div>
                 </div>
                 
-                <div id="gradeDisplay" class="text-xs font-bold tracking-tight uppercase mb-5 text-[#1B1B1B]/40">
+                <div id="gradeDisplay" class="text-sm font-bold tracking-tight uppercase mb-3 text-[#1B1B1B]/60">
                     AWAITING SETUP
                 </div>
                 
-                <div class="w-full bg-[#1B1B1B]/5 rounded-full h-2 overflow-hidden">
-                    <div id="progressBar" class="h-full rounded-full bg-[#1B1B1B]/20 transition-all duration-700 ease-out" style="width: 0%"></div>
+                <div class="w-full bg-[#1B1B1B]/10 rounded-full h-2.5 overflow-hidden">
+                    <div id="progressBar" class="h-full rounded-full bg-[#1B1B1B]/30 transition-all duration-700 ease-out" style="width: 0%"></div>
                 </div>
-                <div id="progressText" class="mt-2 text-[9px] font-bold text-[#1B1B1B]/40 uppercase tracking-widest">0 OF 0 ANSWERED</div>
+                <div id="progressText" class="mt-3 text-[10px] font-bold text-[#1B1B1B]/60 uppercase tracking-widest">0 OF 0 ANSWERED</div>
             </div>
             
-            <!-- Setup Progress -->
-            <div class="space-y-2 pt-1">
-                <div class="flex items-center justify-between text-xs font-medium text-[#1B1B1B]/60">
-                    <span class="uppercase tracking-wide text-[9px] font-bold">Setup Complete</span>
-                    <i data-lucide="check-circle-2" id="statusSetup" class="w-4 h-4 text-transparent border border-[#EEEEEE] rounded-full"></i>
+            <!-- Setup Progress (Clean Checkmarks) -->
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between text-sm font-medium">
+                    <span class="uppercase tracking-wide text-[10px] font-bold text-[#1B1B1B]/70">Setup Complete</span>
+                    <div class="flex items-center justify-center w-5 h-5">
+                        <i data-lucide="x-circle" id="statusSetupIncomplete" class="w-5 h-5 text-[#1B1B1B]/20 transition-all"></i>
+                        <i data-lucide="check-circle-2" id="statusSetupComplete" class="w-5 h-5 text-[#0D3A38] transition-all hidden"></i>
+                    </div>
                 </div>
-                <div class="flex items-center justify-between text-xs font-medium text-[#1B1B1B]/60">
-                    <span class="uppercase tracking-wide text-[9px] font-bold">Assessment Complete</span>
-                    <i data-lucide="check-circle-2" id="statusAnswers" class="w-4 h-4 text-transparent border border-[#EEEEEE] rounded-full"></i>
+                <div class="flex items-center justify-between text-sm font-medium">
+                    <span class="uppercase tracking-wide text-[10px] font-bold text-[#1B1B1B]/70">Assessment Complete</span>
+                    <div class="flex items-center justify-center w-5 h-5">
+                        <i data-lucide="x-circle" id="statusAnswersIncomplete" class="w-5 h-5 text-[#1B1B1B]/20 transition-all"></i>
+                        <i data-lucide="check-circle-2" id="statusAnswersComplete" class="w-5 h-5 text-[#0D3A38] transition-all hidden"></i>
+                    </div>
                 </div>
             </div>
 
-            <!-- Import / Export Actions -->
-            <div class="grid grid-cols-2 gap-2 pt-2">
-                <button onclick="openImportModal()" class="py-2 px-4 bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B]/70 font-bold rounded-lg hover:border-[#00FDCF] hover:text-[#0D3A38] transition-all text-[9px] uppercase tracking-widest flex items-center justify-center gap-1.5">
-                    <i data-lucide="download" class="w-3 h-3"></i> Import
+            <!-- All Actions (Import, Export, Clear) -->
+            <div class="grid grid-cols-2 gap-3 pt-3">
+                <button onclick="openImportModal()" class="py-3 px-4 bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B]/80 font-bold rounded-xl hover:border-[#0D3A38] transition-all text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4"></i> Import
                 </button>
-                <button onclick="openExportModal()" class="py-2 px-4 bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B]/70 font-bold rounded-lg hover:border-[#00FDCF] hover:text-[#0D3A38] transition-all text-[9px] uppercase tracking-widest flex items-center justify-center gap-1.5">
-                    <i data-lucide="upload" class="w-3 h-3"></i> Export
+                <button onclick="openExportModal()" class="py-3 px-4 bg-[#F3F1EC] border border-[#EEEEEE] text-[#1B1B1B]/80 font-bold rounded-xl hover:border-[#0D3A38] transition-all text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
+                    <i data-lucide="upload" class="w-4 h-4"></i> Export
+                </button>
+                <button onclick="handleClearAnswers()" class="py-3 px-3 bg-white border border-[#EEEEEE] text-red-700 font-bold rounded-xl hover:border-red-600 hover:bg-red-50 transition-all text-[10px] uppercase tracking-widest shadow-sm">
+                    Clear Answers
+                </button>
+                <button onclick="handleClearSetup()" class="py-3 px-3 bg-white border border-[#EEEEEE] text-red-700 font-bold rounded-xl hover:border-red-600 hover:bg-red-50 transition-all text-[10px] uppercase tracking-widest shadow-sm">
+                    Clear Setup
                 </button>
             </div>
         </div>
 
-        <div class="p-6 border-t border-[#EEEEEE] bg-[#FAFAFA] mt-auto flex-shrink-0">
-            <!-- Tool Metadata (Pulled from CSV) -->
-            <div class="mb-4 text-[9px] text-[#1B1B1B]/40 uppercase tracking-widest font-semibold space-y-1">
+        <div class="p-4 border-t border-[#EEEEEE] bg-[#FAFAFA] mt-auto flex-shrink-0">
+            <!-- Tool Metadata -->
+            <div class="text-[10px] text-[#1B1B1B]/60 uppercase tracking-widest font-semibold space-y-1.5">
                 <p id="metaVersion">--</p>
                 <p id="metaDate">--</p>
                 <p id="metaAuthor">--</p>
-            </div>
-            <div class="flex gap-2">
-                <button onclick="handleClearAnswers()" class="flex-1 py-2.5 px-3 bg-white border border-[#EEEEEE] text-red-500/70 font-bold rounded-xl hover:border-red-500 hover:text-red-600 hover:bg-red-50 transition-all text-[9px] uppercase tracking-widest shadow-sm">
-                    Clear Answers
-                </button>
-                <button onclick="handleClearSetup()" class="flex-1 py-2.5 px-3 bg-white border border-[#EEEEEE] text-red-500/70 font-bold rounded-xl hover:border-red-500 hover:text-red-600 hover:bg-red-50 transition-all text-[9px] uppercase tracking-widest shadow-sm">
-                    Clear Setup
-                </button>
             </div>
         </div>
     </aside>
@@ -187,46 +191,46 @@
         
         <!-- Setup Warning Banner -->
         <div id="setupWarning" class="m-6 p-6 bg-white text-[#0D3A38] rounded-[24px] border border-[#EEEEEE] shadow-sm flex items-start gap-4">
-            <div class="w-8 h-8 bg-[#0D3A38]/5 rounded-full flex items-center justify-center text-[#0D3A38] shrink-0">
-                <i data-lucide="info" class="w-4 h-4"></i>
+            <div class="w-10 h-10 bg-[#0D3A38]/10 rounded-full flex items-center justify-center text-[#0D3A38] shrink-0">
+                <i data-lucide="info" class="w-5 h-5"></i>
             </div>
             <div>
-                <p class="font-bold text-sm uppercase tracking-wide">Setup Required</p>
-                <p class="text-xs opacity-70 mt-1 leading-relaxed">Please complete the configuration in the sidebar (Project info, Portfolio, Product Type, and Battery logic) to generate the assessment matrix.</p>
+                <p class="font-bold text-base uppercase tracking-wide">Setup Required</p>
+                <p class="text-sm opacity-80 mt-1.5 leading-relaxed">Please complete the configuration in the sidebar (Project info, Portfolio, Product Type, and Battery logic) to generate the assessment matrix.</p>
             </div>
         </div>
 
         <div id="matrixArea" style="display: none;">
-            <!-- Dynamic Legend / Header Row -->
-            <div id="gridHeader" class="grid grid-cols-[20%_repeat(5,1fr)] bg-[#1B1B1B] border-b border-[#0D3A38] sticky top-0 z-20 shadow-lg text-center min-w-[800px]">
+            <!-- Frosted Legend Header -->
+            <div id="gridHeader" class="sticky top-0 z-20 bg-[#F3F1EC]/80 backdrop-blur-md border-b border-[#EEEEEE] px-8 py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
                 <!-- Injected via JS -->
             </div>
 
             <!-- Questions Container -->
-            <div id="questionsContainer" class="p-6 space-y-3 pb-24 min-w-[800px]">
+            <div id="questionsContainer" class="p-6 md:p-8 space-y-6 pb-32 max-w-7xl mx-auto">
                 <!-- Questions injected here by JS -->
             </div>
         </div>
 
     </main>
 
-    <!-- IMPORT / EXPORT MODAL -->
+    <!-- EXPORT/IMPORT AND CONFIRM MODALS -->
     <div id="dataModal" class="fixed inset-0 bg-[#1B1B1B]/80 z-[200] flex items-center justify-center backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
-        <div class="bg-white rounded-[24px] p-6 w-[90%] max-w-2xl shadow-2xl transform scale-95 transition-transform duration-200" id="dataModalContent">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="font-black tracking-tight text-[#1B1B1B] uppercase" id="modalTitle">Export Data</h3>
-                <button onclick="closeModal()" class="text-[#1B1B1B]/40 hover:text-[#1B1B1B] transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <div class="bg-white rounded-[24px] p-8 w-[90%] max-w-2xl shadow-2xl transform scale-95 transition-transform duration-200" id="dataModalContent">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-black tracking-tight uppercase text-[#0D3A38]" id="modalTitle">Export Data</h3>
+                <button onclick="closeModal()" class="text-[#1B1B1B]/60 hover:text-[#0D3A38] transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <p class="text-xs text-[#1B1B1B]/60 mb-4" id="modalDesc">Copy the data below to save your progress.</p>
+            <p class="text-sm text-[#1B1B1B]/80 mb-6 font-medium" id="modalDesc">Copy the data below to save your progress.</p>
             
             <!-- Export Table View -->
             <div id="exportContainer" class="hidden">
-                <div class="border border-[#EEEEEE] rounded-xl overflow-hidden max-h-[60vh] overflow-y-auto mb-6">
-                    <table class="w-full text-xs text-left border-collapse">
-                        <thead class="bg-[#F3F1EC] text-[#1B1B1B]/60 uppercase tracking-widest text-[9px] sticky top-0 z-10">
+                <div class="border border-[#EEEEEE] rounded-xl overflow-hidden max-h-[50vh] overflow-y-auto mb-6">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <thead class="bg-[#F3F1EC] text-[#1B1B1B]/70 uppercase tracking-widest text-[10px] sticky top-0 z-10">
                             <tr>
-                                <th class="p-3 border-b border-[#EEEEEE] w-1/2">Attribute</th>
-                                <th class="p-3 border-b border-[#EEEEEE] border-l w-1/2">Value</th>
+                                <th class="p-4 border-b border-[#EEEEEE] w-1/2">Attribute</th>
+                                <th class="p-4 border-b border-[#EEEEEE] border-l w-1/2">Value</th>
                             </tr>
                         </thead>
                         <tbody id="exportTableBody" class="text-[#1B1B1B]">
@@ -235,8 +239,8 @@
                     </table>
                 </div>
                 <div class="flex justify-end gap-3">
-                    <button onclick="closeModal()" class="py-2.5 px-6 font-bold text-[#1B1B1B]/60 hover:bg-[#F3F1EC] rounded-xl text-[10px] uppercase tracking-widest transition-all">Close</button>
-                    <button id="copyBtn" onclick="copyTableData()" class="py-2.5 px-8 bg-[#0D3A38] text-white font-bold rounded-xl hover:bg-[#00FDCF] hover:text-[#0D3A38] text-[10px] uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2">
+                    <button onclick="closeModal()" class="py-3 px-6 font-bold text-[#1B1B1B]/80 hover:bg-[#F3F1EC] rounded-xl text-xs uppercase tracking-widest transition-all">Close</button>
+                    <button id="copyBtn" onclick="copyTableData()" class="py-3 px-8 bg-[#0D3A38] text-white font-bold rounded-xl hover:bg-[#1B1B1B] text-xs uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2">
                         <i data-lucide="copy" class="w-4 h-4"></i> <span>Copy Table</span>
                     </button>
                 </div>
@@ -244,11 +248,11 @@
 
             <!-- Import Textarea View -->
             <div id="importContainer" class="hidden">
-                <textarea id="modalTextarea" class="w-full h-64 bg-[#F3F1EC] border border-[#EEEEEE] p-4 rounded-xl text-xs font-mono focus:outline-none focus:border-[#00FDCF] transition-colors whitespace-pre overflow-x-auto" placeholder="Paste your 2-column spreadsheet data here..."></textarea>
+                <textarea id="modalTextarea" class="w-full h-64 bg-[#F3F1EC] border border-[#EEEEEE] p-5 rounded-xl text-sm font-mono focus:outline-none focus:border-[#0D3A38] transition-colors whitespace-pre overflow-x-auto text-[#1B1B1B]" placeholder="Paste your 2-column spreadsheet data here..."></textarea>
                 
                 <div class="mt-6 flex justify-end gap-3">
-                    <button onclick="closeModal()" class="py-2.5 px-6 font-bold text-[#1B1B1B]/60 hover:bg-[#F3F1EC] rounded-xl text-[10px] uppercase tracking-widest transition-all">Cancel</button>
-                    <button onclick="executeImport()" class="py-2.5 px-8 bg-[#0D3A38] text-white font-bold rounded-xl hover:bg-[#00FDCF] hover:text-[#0D3A38] text-[10px] uppercase tracking-widest transition-all shadow-md">Apply Import</button>
+                    <button onclick="closeModal()" class="py-3 px-6 font-bold text-[#1B1B1B]/80 hover:bg-[#F3F1EC] rounded-xl text-xs uppercase tracking-widest transition-all">Cancel</button>
+                    <button onclick="executeImport()" class="py-3 px-8 bg-[#0D3A38] text-white font-bold rounded-xl hover:bg-[#1B1B1B] text-xs uppercase tracking-widest transition-all shadow-md">Apply Import</button>
                 </div>
             </div>
         </div>
@@ -256,20 +260,36 @@
 
     <!-- CONFIRMATION MODAL -->
     <div id="confirmModal" class="fixed inset-0 bg-[#1B1B1B]/80 z-[300] flex items-center justify-center backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
-        <div class="bg-white rounded-[24px] p-6 w-[90%] max-w-sm shadow-2xl transform scale-95 transition-transform duration-200" id="confirmModalContent">
+        <div class="bg-white rounded-[24px] p-8 w-[90%] max-w-sm shadow-2xl transform scale-95 transition-transform duration-200" id="confirmModalContent">
             <div class="flex justify-between items-center mb-4">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600">
-                        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-700">
+                        <i data-lucide="alert-triangle" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="font-black tracking-tight text-red-600 uppercase" id="confirmModalTitle">Confirm</h3>
+                    <h3 class="font-black tracking-tight text-red-700 uppercase text-lg" id="confirmModalTitle">Confirm</h3>
                 </div>
-                <button onclick="closeConfirmModal()" class="text-[#1B1B1B]/40 hover:text-[#1B1B1B] transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+                <button onclick="closeConfirmModal()" class="text-[#1B1B1B]/60 hover:text-[#1B1B1B] transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <p class="text-sm text-[#1B1B1B]/70 mb-6 font-medium leading-relaxed" id="confirmModalDesc">Are you sure?</p>
+            <p class="text-base text-[#1B1B1B]/80 mb-8 font-medium leading-relaxed" id="confirmModalDesc">Are you sure?</p>
             <div class="flex justify-end gap-3">
-                <button onclick="closeConfirmModal()" class="py-2.5 px-6 font-bold text-[#1B1B1B]/60 hover:bg-[#F3F1EC] rounded-xl text-[10px] uppercase tracking-widest transition-all">Cancel</button>
-                <button id="confirmActionBtn" class="py-2.5 px-6 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 text-[10px] uppercase tracking-widest transition-all shadow-md">Confirm</button>
+                <button onclick="closeConfirmModal()" class="py-3 px-6 font-bold text-[#1B1B1B]/80 hover:bg-[#F3F1EC] rounded-xl text-xs uppercase tracking-widest transition-all">Cancel</button>
+                <button id="confirmActionBtn" class="py-3 px-6 bg-red-700 text-white font-bold rounded-xl hover:bg-red-800 text-xs uppercase tracking-widest transition-all shadow-md">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPLASH MODAL -->
+    <div id="splashModal" class="fixed inset-0 bg-[#1B1B1B]/80 z-[400] flex items-center justify-center backdrop-blur-sm transition-opacity duration-300" onclick="if(event.target === this) closeSplashModal()">
+        <div class="bg-white rounded-[24px] p-8 md:p-12 w-[90%] max-w-2xl shadow-2xl transform transition-transform duration-300" id="splashModalContent">
+            <h2 class="text-2xl md:text-3xl font-black tracking-tight uppercase leading-tight text-[#0D3A38] mb-6">Welcome to Detroit Lite,<br><span class="font-light opacity-80 text-xl md:text-2xl">Logitech's Circular Design Scorecard</span></h2>
+            <div class="space-y-4 mb-10 text-sm md:text-base text-[#1B1B1B]/80 font-medium leading-relaxed">
+                <p>This tool asks 8 product-specific circular design questions, selected as the most important strategies for your project type, to guide and encourage circular design decisions.</p>
+                <p>Developed by Logitech’s Design for Sustainability team, it simplifies the in-depth Detroit Circular Design Index, based on internal studies, external engagements, and industry best practices.</p>
+            </div>
+            <div class="flex justify-end">
+                <button onclick="closeSplashModal()" class="py-4 px-8 bg-[#0D3A38] text-white font-bold rounded-xl hover:bg-[#1B1B1B] text-xs uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2">
+                    Start with the Setup <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -304,17 +324,14 @@
 
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
+            // Set default date to today's local date
+            const d = new Date();
+            const today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+            document.getElementById('setupDate').value = today;
+            state.date = today;
+
             lucide.createIcons();
             fetchAndParseCSV();
-            
-            // Global click listener to close info tooltips
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('button[onclick^="toggleInfo"]')) {
-                    document.querySelectorAll('[id^="info-"]').forEach(box => {
-                        box.classList.add('hidden');
-                    });
-                }
-            });
         });
 
         async function fetchAndParseCSV() {
@@ -336,8 +353,6 @@
         }
 
         function processCSV(rows) {
-            // Excel rows to array indexes (0-based)
-            // Row 1-3 (0-2): Meta
             const colA = (row) => row?.[0] ? row[0].trim() : '';
             const colB = (row) => row?.[1] ? row[1].trim() : '';
             
@@ -345,7 +360,6 @@
             appData.meta.date = `${colA(rows[1])} ${colB(rows[1])}`.trim() || 'Unknown';
             appData.meta.author = `${colA(rows[2])} ${colB(rows[2])}`.trim() || 'Unknown';
 
-            // Rows 5-7 (4-6): Achievements
             for (let i = 4; i <= 6; i++) {
                 if (rows[i] && rows[i][0] && rows[i][1]) {
                     appData.achievements.push({
@@ -354,18 +368,14 @@
                     });
                 }
             }
-            // Sort achievements highest threshold first for grading logic
             appData.achievements.sort((a, b) => b.threshold - a.threshold);
 
-            // Row 9 & 10 (8 & 9): Portfolios & Product Types starting from Col J (index 9)
             appData.mapping.portfoliosRow = rows[8] || [];
             appData.mapping.productTypesRow = rows[9] || [];
 
-            // Row 12 (11): Headers from Col E to I (indices 4 to 8)
             const hr = rows[11] || [];
             appData.headers = [hr[4], hr[5], hr[6], hr[7], hr[8]].map(s => s || 'N/A');
 
-            // Helper to parse question row
             const parseQuestion = (r) => {
                 if (!r || !r[0]) return null;
                 return {
@@ -374,33 +384,26 @@
                     subtitle: r[2],
                     category: r[3],
                     options: [r[4], r[5], r[6], r[7], r[8]],
-                    mappingData: r // keep full row for true/false checks
+                    mappingData: r
                 };
             };
 
-            // Row 13 (12): Battery Yes
             appData.batteryYes = parseQuestion(rows[12]);
-            // Row 14 (13): Battery No
             appData.batteryNo = parseQuestion(rows[13]);
 
-            // Row 15+ (14+): Standard Questions
             for (let i = 14; i < rows.length; i++) {
                 const q = parseQuestion(rows[i]);
                 if (q) appData.standardQuestions.push(q);
             }
 
-            // Initialize UI Options
             populatePortfolioDropdown();
             
-            // Display Meta
             document.getElementById('metaVersion').innerText = appData.meta.version;
             document.getElementById('metaDate').innerText = appData.meta.date;
             document.getElementById('metaAuthor').innerText = appData.meta.author;
 
-            // Render Header
             renderGridHeader();
 
-            // Hide Loading
             const loader = document.getElementById('loadingOverlay');
             loader.style.opacity = '0';
             setTimeout(() => loader.style.display = 'none', 500);
@@ -410,7 +413,6 @@
 
         function populatePortfolioDropdown() {
             const ports = new Set();
-            // Start from col index 9 (Col J)
             for (let i = 9; i < appData.mapping.portfoliosRow.length; i++) {
                 const p = appData.mapping.portfoliosRow[i];
                 if (p && p.trim() !== '') ports.add(p.trim());
@@ -429,7 +431,7 @@
         function handlePortfolioChange() {
             state.answers = {};
             state.portfolio = document.getElementById('portfolioSelect').value;
-            state.productType = ""; // reset child
+            state.productType = "";
             
             const tSelect = document.getElementById('productTypeSelect');
             tSelect.innerHTML = '<option value="" disabled selected>Select Type</option>';
@@ -466,13 +468,12 @@
                 state.answers = {};
             }
             state.hasBattery = val;
-            document.getElementById('btnBatteryYes').className = `flex-1 py-1.5 text-xs font-bold rounded-lg transition-all ${val === true ? 'bg-white shadow-sm text-[#0D3A38] border border-[#EEEEEE]' : 'text-[#1B1B1B]/40 hover:text-[#1B1B1B]/80'}`;
-            document.getElementById('btnBatteryNo').className = `flex-1 py-1.5 text-xs font-bold rounded-lg transition-all ${val === false ? 'bg-white shadow-sm text-[#0D3A38] border border-[#EEEEEE]' : 'text-[#1B1B1B]/40 hover:text-[#1B1B1B]/80'}`;
+            document.getElementById('btnBatteryYes').className = `flex-1 py-1 text-sm font-bold rounded-lg transition-all ${val === true ? 'bg-white shadow-sm text-[#0D3A38] border border-[#EEEEEE]' : 'border border-transparent text-[#1B1B1B]/70 hover:text-[#1B1B1B]'}`;
+            document.getElementById('btnBatteryNo').className = `flex-1 py-1 text-sm font-bold rounded-lg transition-all ${val === false ? 'bg-white shadow-sm text-[#0D3A38] border border-[#EEEEEE]' : 'border border-transparent text-[#1B1B1B]/70 hover:text-[#1B1B1B]'}`;
             handleSetupChange();
         }
 
         function handleSetupChange() {
-            // Read all fields
             state.projectName = document.getElementById('setupProject').value;
             state.gate = document.getElementById('setupGate').value;
             state.date = document.getElementById('setupDate').value;
@@ -480,18 +481,20 @@
 
             const isSetupComplete = state.projectName && state.gate && state.date && state.portfolio && state.productType && (state.hasBattery !== null);
 
-            const statusSetup = document.getElementById('statusSetup');
+            const setupIncomplete = document.getElementById('statusSetupIncomplete');
+            const setupComplete = document.getElementById('statusSetupComplete');
+
             if (isSetupComplete) {
-                statusSetup.classList.remove('text-transparent', 'border', 'border-[#EEEEEE]');
-                statusSetup.classList.add('text-[#0D3A38]', 'border-none');
+                setupIncomplete.classList.add('hidden');
+                setupComplete.classList.remove('hidden');
                 
                 document.getElementById('setupWarning').style.display = 'none';
                 document.getElementById('matrixArea').style.display = 'block';
                 
                 calculateActiveQuestions();
             } else {
-                statusSetup.classList.add('text-transparent', 'border', 'border-[#EEEEEE]');
-                statusSetup.classList.remove('text-[#0D3A38]', 'border-none');
+                setupIncomplete.classList.remove('hidden');
+                setupComplete.classList.add('hidden');
                 
                 document.getElementById('setupWarning').style.display = 'flex';
                 document.getElementById('matrixArea').style.display = 'none';
@@ -503,7 +506,6 @@
         function calculateActiveQuestions() {
             activeQuestions = [];
             
-            // 1. Find the target column index based on Portfolio and Product Type
             let targetCol = -1;
             for (let i = 9; i < appData.mapping.portfoliosRow.length; i++) {
                 if (appData.mapping.portfoliosRow[i]?.trim() === state.portfolio && 
@@ -513,16 +515,14 @@
                 }
             }
 
-            if (targetCol === -1) return; // Should not happen with valid selections
+            if (targetCol === -1) return;
 
-            // 2. Battery Question
             if (state.hasBattery === true && appData.batteryYes) {
                 activeQuestions.push(appData.batteryYes);
             } else if (state.hasBattery === false && appData.batteryNo) {
                 activeQuestions.push(appData.batteryNo);
             }
 
-            // 3. Standard Questions
             appData.standardQuestions.forEach(q => {
                 const val = q.mappingData[targetCol];
                 if (val && val.toString().trim().toUpperCase() === 'TRUE') {
@@ -530,7 +530,6 @@
                 }
             });
 
-            // Re-render
             renderQuestions();
             updateUI();
         }
@@ -562,24 +561,27 @@
                 "Clear Setup", 
                 "Are you sure you want to clear the setup configuration and all answers? This cannot be undone.", 
                 function() {
+                    const d = new Date();
+                    const today = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+
                     state.projectName = "";
                     state.gate = "";
-                    state.date = "";
+                    state.date = today;
                     state.portfolio = "";
                     state.productType = "";
                     state.hasBattery = null;
                     
                     document.getElementById('setupProject').value = "";
                     document.getElementById('setupGate').value = "";
-                    document.getElementById('setupDate').value = "";
+                    document.getElementById('setupDate').value = today;
                     document.getElementById('portfolioSelect').value = "";
                     
                     const tSelect = document.getElementById('productTypeSelect');
                     tSelect.innerHTML = '<option value="" disabled selected>Select Type</option>';
                     tSelect.disabled = true;
 
-                    document.getElementById('btnBatteryYes').className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]";
-                    document.getElementById('btnBatteryNo').className = "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all text-[#1B1B1B]/50 hover:text-[#1B1B1B]";
+                    document.getElementById('btnBatteryYes').className = "flex-1 py-1 text-sm font-bold rounded-lg transition-all border border-transparent text-[#1B1B1B]/70 hover:text-[#1B1B1B]";
+                    document.getElementById('btnBatteryNo').className = "flex-1 py-1 text-sm font-bold rounded-lg transition-all border border-transparent text-[#1B1B1B]/70 hover:text-[#1B1B1B]";
                     
                     activeQuestions = [];
                     state.answers = {};
@@ -588,31 +590,14 @@
             );
         }
 
-        function toggleInfo(e, id) {
-            e.stopPropagation();
-            const el = document.getElementById(id);
-            if (el) {
-                // Close all others first
-                document.querySelectorAll('[id^="info-"]').forEach(box => {
-                    if (box.id !== id) box.classList.add('hidden');
-                });
-                // Toggle clicked one
-                el.classList.toggle('hidden');
-            }
-        }
-
         // --- UI & RENDERING ---
 
         function parseMarkdownLinks(text) {
             if (!text || String(text).trim() === '') return '-';
             const safeText = String(text);
-            // Matches [Link Text](https://example.com)
             const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-            
-            // Replaces with an anchor tag. 
-            // currentColor inherits text color for light/dark mode compatibility.
-            // stopPropagation prevents the click from selecting the answer card.
-            return safeText.replace(linkRegex, '<a href="$2" target="_blank" rel="noopener noreferrer" class="underline decoration-[#00FDCF] decoration-2 hover:text-[#00FDCF] transition-colors font-bold" onclick="event.stopPropagation()">$1</a>');
+            // High contrast link: Inherits text color but adds a thick, fully accessible Neon border/bg on hover.
+            return safeText.replace(linkRegex, '<a href="$2" target="_blank" rel="noopener noreferrer" class="font-bold underline decoration-[#00FDCF] decoration-[3px] hover:bg-[#00FDCF]/20 hover:text-[#0D3A38] transition-colors rounded-sm" onclick="event.stopPropagation()">$1</a>');
         }
 
         function updateUI() {
@@ -626,11 +611,11 @@
             const progressTxt = document.getElementById('progressText');
             const cardBg = document.getElementById('scoreCardBg');
             const gradeEl = document.getElementById('gradeDisplay');
-            const statusAnswers = document.getElementById('statusAnswers');
+            const ansIncomplete = document.getElementById('statusAnswersIncomplete');
+            const ansComplete = document.getElementById('statusAnswersComplete');
             const scoreTitle = document.getElementById('scoreCardTitle');
 
             if (isSetupComplete && totalQuestions > 0) {
-                // Calculate Average Score
                 const totalPoints = Object.values(state.answers).reduce((a, b) => a + b, 0);
                 const avgScore = answersCount === 0 ? 0 : (totalPoints / totalQuestions);
                 
@@ -640,10 +625,9 @@
                 progressTxt.textContent = `${answersCount} OF ${totalQuestions} ANSWERED`;
 
                 if (allAnswered) {
-                    statusAnswers.classList.remove('text-transparent', 'border', 'border-[#EEEEEE]');
-                    statusAnswers.classList.add('text-[#0D3A38]', 'border-none');
+                    ansIncomplete.classList.add('hidden');
+                    ansComplete.classList.remove('hidden');
 
-                    // Determine Grade from CSV achievements
                     let awardedLevel = null;
                     for (const ach of appData.achievements) {
                         if (avgScore >= ach.threshold) {
@@ -656,56 +640,51 @@
                         const achIndex = appData.achievements.indexOf(awardedLevel);
                         
                         if (achIndex === 0) {
-                            // Top Tier (Dark Mode styling to stand out)
                             cardBg.className = "bg-[#0D3A38] rounded-[24px] p-6 text-center shadow-md relative overflow-hidden transition-all duration-500";
                             scoreEl.className = "text-display text-white transition-colors duration-500";
                             progressEl.className = "h-full rounded-full bg-[#00FDCF] shadow-[0_0_10px_#00FDCF] transition-all duration-700 ease-out";
                             gradeEl.innerHTML = awardedLevel.name.toUpperCase();
-                            gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-[#00FDCF]";
-                            scoreTitle.className = "text-[10px] font-bold text-white/50 uppercase tracking-widest mb-3";
-                            progressTxt.className = "mt-2 text-[9px] font-bold text-white/40 uppercase tracking-widest";
+                            gradeEl.className = "text-sm font-bold tracking-tight uppercase mb-3 text-[#00FDCF]";
+                            scoreTitle.className = "text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1";
+                            progressTxt.className = "mt-3 text-[10px] font-bold text-white/70 uppercase tracking-widest";
                         } else if (achIndex === 1) {
-                            // Middle Tier (Neon Teal)
-                            cardBg.className = "bg-[#D6F5F0] rounded-[24px] p-6 text-center border border-[#00FDCF] shadow-sm relative overflow-hidden transition-all duration-500";
+                            cardBg.className = "bg-[#D6F5F0] rounded-[24px] p-6 text-center border border-[#0D3A38]/10 shadow-sm relative overflow-hidden transition-all duration-500";
                             scoreEl.className = "text-display text-[#0D3A38] transition-colors duration-500";
                             progressEl.className = "h-full rounded-full bg-[#00FDCF] shadow-[0_0_10px_#00FDCF] transition-all duration-700 ease-out";
                             gradeEl.innerHTML = awardedLevel.name.toUpperCase();
-                            gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-[#0D3A38]";
-                            scoreTitle.className = "text-[10px] font-bold text-[#0D3A38]/50 uppercase tracking-widest mb-3";
-                            progressTxt.className = "mt-2 text-[9px] font-bold text-[#0D3A38]/50 uppercase tracking-widest";
+                            gradeEl.className = "text-sm font-bold tracking-tight uppercase mb-3 text-[#0D3A38]";
+                            scoreTitle.className = "text-[10px] font-bold text-[#0D3A38]/70 uppercase tracking-widest mb-1";
+                            progressTxt.className = "mt-3 text-[10px] font-bold text-[#0D3A38]/70 uppercase tracking-widest";
                         } else {
-                            // Lowest Passing Tier (Yellow/Caution)
-                            cardBg.className = "bg-[#FFFBEB] rounded-[24px] p-6 text-center border border-yellow-200 shadow-sm relative overflow-hidden transition-all duration-500";
-                            scoreEl.className = "text-display text-yellow-800 transition-colors duration-500";
+                            cardBg.className = "bg-[#FFFBEB] rounded-[24px] p-6 text-center border border-yellow-300 shadow-sm relative overflow-hidden transition-all duration-500";
+                            scoreEl.className = "text-display text-yellow-900 transition-colors duration-500";
                             progressEl.className = "h-full rounded-full bg-yellow-500 transition-all duration-700 ease-out";
                             gradeEl.innerHTML = awardedLevel.name.toUpperCase();
-                            gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-yellow-800";
-                            scoreTitle.className = "text-[10px] font-bold text-yellow-800/50 uppercase tracking-widest mb-3";
-                            progressTxt.className = "mt-2 text-[9px] font-bold text-yellow-800/50 uppercase tracking-widest";
+                            gradeEl.className = "text-sm font-bold tracking-tight uppercase mb-3 text-yellow-900";
+                            scoreTitle.className = "text-[10px] font-bold text-yellow-900/70 uppercase tracking-widest mb-1";
+                            progressTxt.className = "mt-3 text-[10px] font-bold text-yellow-900/70 uppercase tracking-widest";
                         }
                     } else {
-                        // Failed
                         cardBg.className = "bg-[#FFF1F2] rounded-[24px] p-6 text-center border border-red-200 shadow-sm relative overflow-hidden transition-all duration-500";
-                        scoreEl.className = "text-display text-red-600 transition-colors duration-500";
-                        progressEl.className = "h-full rounded-full bg-red-500 transition-all duration-700 ease-out";
+                        scoreEl.className = "text-display text-red-700 transition-colors duration-500";
+                        progressEl.className = "h-full rounded-full bg-red-600 transition-all duration-700 ease-out";
                         gradeEl.innerHTML = `GETTING STARTED`;
-                        gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-red-600";
-                        scoreTitle.className = "text-[10px] font-bold text-red-800/50 uppercase tracking-widest mb-3";
-                        progressTxt.className = "mt-2 text-[9px] font-bold text-red-800/50 uppercase tracking-widest";
+                        gradeEl.className = "text-sm font-bold tracking-tight uppercase mb-3 text-red-700";
+                        scoreTitle.className = "text-[10px] font-bold text-red-900/70 uppercase tracking-widest mb-1";
+                        progressTxt.className = "mt-3 text-[10px] font-bold text-red-900/70 uppercase tracking-widest";
                     }
 
                 } else {
-                    // In Progress
-                    statusAnswers.classList.add('text-transparent', 'border', 'border-[#EEEEEE]');
-                    statusAnswers.classList.remove('text-[#0D3A38]', 'border-none');
+                    ansIncomplete.classList.remove('hidden');
+                    ansComplete.classList.add('hidden');
 
                     cardBg.className = "bg-[#FAFAFA] rounded-[24px] p-6 text-center border border-[#EEEEEE] shadow-sm relative overflow-hidden transition-all duration-500";
                     scoreEl.className = "text-display text-[#1B1B1B] transition-colors duration-500";
                     progressEl.className = "h-full rounded-full bg-[#1B1B1B]/30 transition-all duration-700 ease-out";
                     gradeEl.innerHTML = `IN PROGRESS`;
-                    gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-[#1B1B1B]/40";
-                    scoreTitle.className = "text-[10px] font-bold text-[#1B1B1B]/40 uppercase tracking-widest mb-3";
-                    progressTxt.className = "mt-2 text-[9px] font-bold text-[#1B1B1B]/40 uppercase tracking-widest";
+                    gradeEl.className = "text-sm font-bold tracking-tight uppercase mb-3 text-[#1B1B1B]/60";
+                    scoreTitle.className = "text-[10px] font-bold text-[#1B1B1B]/60 uppercase tracking-widest mb-1";
+                    progressTxt.className = "mt-3 text-[10px] font-bold text-[#1B1B1B]/60 uppercase tracking-widest";
                 }
 
             } else {
@@ -715,44 +694,47 @@
                 cardBg.className = "bg-[#FAFAFA] rounded-[24px] p-6 text-center border border-[#EEEEEE] shadow-sm relative overflow-hidden transition-all duration-500";
                 scoreEl.className = "text-display text-[#1B1B1B]/30 transition-colors duration-500";
                 gradeEl.innerText = "AWAITING SETUP";
-                gradeEl.className = "text-xs font-bold tracking-tight uppercase mb-5 text-[#1B1B1B]/40";
-                scoreTitle.className = "text-[10px] font-bold text-[#1B1B1B]/40 uppercase tracking-widest mb-3";
-                progressTxt.className = "mt-2 text-[9px] font-bold text-[#1B1B1B]/40 uppercase tracking-widest";
+                gradeEl.className = "text-sm font-bold tracking-tight uppercase mb-3 text-[#1B1B1B]/60";
+                scoreTitle.className = "text-[10px] font-bold text-[#1B1B1B]/60 uppercase tracking-widest mb-1";
+                progressTxt.className = "mt-3 text-[10px] font-bold text-[#1B1B1B]/60 uppercase tracking-widest";
                 
-                statusAnswers.classList.add('text-transparent', 'border', 'border-[#EEEEEE]');
-                statusAnswers.classList.remove('text-[#0D3A38]', 'border-none');
+                ansIncomplete.classList.remove('hidden');
+                ansComplete.classList.add('hidden');
             }
         }
 
         function renderGridHeader() {
             const h = document.getElementById('gridHeader');
+            
             let cols = `
-                <div class="px-5 py-4 flex items-start justify-start border-r border-white/5">
-                    <span class="text-[10px] font-bold uppercase text-[#00FDCF] tracking-[0.2em]">Attribute Question</span>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="list-checks" class="w-5 h-5 text-[#0D3A38]/80"></i>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#0D3A38]/80">Scoring Legend</span>
                 </div>
+                <div class="flex flex-nowrap gap-3 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
             `;
             
-            // Generate 5 columns dynamically from CSV headers
-            const colorClasses = [
-                "text-white/60 group-hover:text-white", // Col 1 (1 pt)
-                "text-white/80 group-hover:text-white", // Col 2 (3 pt)
-                "text-white group-hover:text-white",    // Col 3 (5 pt)
-                "text-[#00FDCF] group-hover:text-white",// Col 4 (7 pt)
-                "text-[#00FDCF]"                        // Col 5 (10 pt)
+            const legendStyles = [
+                "bg-[#FFF1F2] text-red-800 border border-red-200",
+                "bg-[#FFF7ED] text-orange-800 border border-orange-200",
+                "bg-[#FFFBEB] text-yellow-900 border border-yellow-300",
+                "bg-[#F0FDF4] text-[#0D3A38] border border-[#0D3A38]/30",
+                "bg-[#00FDCF] text-[#0D3A38] border border-[#0D3A38] shadow-sm"
             ];
             
             appData.headers.forEach((title, idx) => {
                 const pts = SCORES[idx];
-                const bgClass = idx === 4 ? "bg-[#00FDCF]/5 hover:bg-[#00FDCF]/10" : "hover:bg-white/5";
-                
                 cols += `
-                    <div class="px-4 py-4 border-r border-white/5 flex flex-col justify-start group transition-colors ${bgClass}">
-                        <div class="text-[10px] font-bold uppercase text-white/90 tracking-widest mb-1 leading-tight">${title}</div>
-                        <div class="text-lg font-black transition-colors mt-auto pt-2 ${colorClasses[idx]}">${pts} pts</div>
+                    <div class="flex flex-col items-center justify-center px-4 py-2 rounded-xl whitespace-nowrap ${legendStyles[idx]}">
+                        <div class="text-[10px] font-bold uppercase tracking-widest opacity-90">${title}</div>
+                        <div class="text-lg font-black mt-1 leading-none">${pts} pts</div>
                     </div>
                 `;
             });
+            
+            cols += `</div>`;
             h.innerHTML = cols;
+            lucide.createIcons();
         }
 
         function renderQuestions() {
@@ -762,114 +744,61 @@
             activeQuestions.forEach(q => {
                 const currentAnswer = state.answers[q.id];
                 
-                // Parse markdown links for titles and subtitles
                 const formattedQuestion = parseMarkdownLinks(q.question);
                 const formattedSubtitle = parseMarkdownLinks(q.subtitle);
                 
                 const card = document.createElement('div');
-                // Removed overflow-hidden so the pop-out info box can float freely
-                card.className = "bg-white rounded-[24px] shadow-sm border border-[#EEEEEE] group hover:border-[#00FDCF]/30 hover:shadow-md transition-all duration-300 relative";
+                card.className = "bg-white rounded-[24px] shadow-sm border border-[#EEEEEE] p-6 md:p-8 hover:border-[#0D3A38]/20 hover:shadow-md transition-all duration-300 relative";
 
-                const mobileHeader = `
-                    <div class="lg:hidden px-6 py-4 border-b border-[#EEEEEE] bg-white rounded-t-[24px]">
-                        <div class="flex flex-wrap items-center gap-2 mb-3">
-                            <span class="text-[10px] font-mono text-[#1B1B1B]/50 bg-[#FAFAFA] border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.id}</span>
-                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0D3A38]/50 bg-[#FAFAFA] border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.category}</span>
-                        </div>
-                        <div class="flex items-start justify-between gap-3 relative">
-                            <h3 class="font-bold text-[#1B1B1B] text-lg leading-tight">${formattedQuestion}</h3>
-                            <button onclick="toggleInfo(event, 'info-mobile-${q.id}')" class="text-[#1B1B1B]/30 hover:text-[#00FDCF] transition-colors shrink-0 mt-0.5" title="More Info">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                            </button>
-                            <!-- Pop-out box -->
-                            <div id="info-mobile-${q.id}" class="hidden absolute z-[100] right-0 top-full mt-2 w-64 p-4 bg-[#1B1B1B] text-white shadow-2xl border border-[#0D3A38] rounded-xl">
-                                <div class="absolute -top-1.5 right-2 w-3 h-3 bg-[#1B1B1B] border-l border-t border-[#0D3A38] rotate-45"></div>
-                                <p class="text-xs leading-relaxed font-medium relative z-10">${formattedSubtitle}</p>
+                const subtitleHTML = (formattedSubtitle && formattedSubtitle !== '-') 
+                    ? `<p class="text-sm md:text-base leading-relaxed font-medium text-[#1B1B1B]/70 mt-3">${formattedSubtitle}</p>`
+                    : '';
+
+                const questionHTML = `
+                    <div class="mb-6">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 md:gap-4">
+                            <h3 class="text-xl lg:text-2xl font-black text-[#0D3A38] leading-tight tracking-tight">${formattedQuestion}</h3>
+                            <div class="flex flex-wrap items-center gap-2 shrink-0 md:pt-1">
+                                <span class="text-xs font-mono font-semibold text-[#1B1B1B]/70 bg-[#FAFAFA] border border-[#EEEEEE] px-2.5 py-1 rounded-lg">ID: ${q.id}</span>
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0D3A38]/80 bg-[#FAFAFA] border border-[#EEEEEE] px-3 py-1 rounded-lg">${q.category}</span>
                             </div>
                         </div>
+                        ${subtitleHTML}
                     </div>
                 `;
 
-                const gridDiv = document.createElement('div');
-                gridDiv.className = "grid grid-cols-1 lg:grid-cols-[20%_repeat(5,1fr)] min-h-[110px]";
-
-                const questionCol = `
-                    <div class="hidden lg:flex px-5 py-4 flex-col justify-start border-r border-[#EEEEEE] bg-[#FAFAFA]/50 relative rounded-l-[24px]">
-                        <div class="flex flex-wrap items-center gap-2 mb-3">
-                            <span class="text-[10px] font-mono text-[#1B1B1B]/50 bg-white border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.id}</span>
-                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0D3A38]/50 bg-white border border-[#EEEEEE] px-2 py-1 rounded-md shadow-sm">${q.category}</span>
-                        </div>
-                        <div class="flex items-start justify-between gap-3 mt-1">
-                            <h3 class="font-bold text-[#1B1B1B] text-base leading-tight tracking-tight">${formattedQuestion}</h3>
-                            <div class="relative static-popout-container">
-                                <button onclick="toggleInfo(event, 'info-desktop-${q.id}')" class="text-[#1B1B1B]/30 hover:text-[#00FDCF] transition-colors shrink-0 mt-0.5" title="More Info">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-                                </button>
-                                <!-- Pop-out box -->
-                                <div id="info-desktop-${q.id}" class="hidden absolute z-[100] left-0 top-full mt-2 w-64 p-4 bg-[#1B1B1B] text-white shadow-2xl border border-[#0D3A38] rounded-xl">
-                                    <div class="absolute -top-1.5 left-1.5 w-3 h-3 bg-[#1B1B1B] border-l border-t border-[#0D3A38] rotate-45"></div>
-                                    <p class="text-xs leading-relaxed font-medium relative z-10">${formattedSubtitle}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                let optionsHTML = '';
+                let optionsHTML = '<div class="grid grid-cols-1 md:grid-cols-5 gap-3">';
                 q.options.forEach((opt, idx) => {
                     const points = SCORES[idx];
                     const isSelected = currentAnswer === points;
                     
-                    let activeClass = "";
-                    let fontClass = "text-[#1B1B1B]/60";
-                    let roundedClass = (idx === 4) ? "lg:rounded-r-[24px]" : "";
-
-                    // Sequential ramping colors (1 -> 10)
-                    // Note: We use a text-shadow trick instead of font-bold to completely prevent text layout shifts
-                    if (idx === 0) { // 1 pt (Worst)
-                        if(isSelected) {
-                            activeClass = "bg-[#FEF2F2] ring-inset ring-2 ring-red-500 z-10";
-                            fontClass = "text-red-700 [text-shadow:0_0_0.3px_currentColor]";
-                        }
-                    } else if (idx === 1) { // 3 pts
-                        if(isSelected) {
-                            activeClass = "bg-[#FFF7ED] ring-inset ring-2 ring-orange-500 z-10";
-                            fontClass = "text-orange-700 [text-shadow:0_0_0.3px_currentColor]";
-                        }
-                    } else if (idx === 2) { // 5 pts
-                        if(isSelected) {
-                            activeClass = "bg-[#FFFBEB] ring-inset ring-2 ring-yellow-500 z-10";
-                            fontClass = "text-yellow-700 [text-shadow:0_0_0.3px_currentColor]";
-                        }
-                    } else if (idx === 3) { // 7 pts
-                        if(isSelected) {
-                            activeClass = "bg-[#F0FDF4] ring-inset ring-2 ring-[#0D3A38] z-10";
-                            fontClass = "text-[#0D3A38] [text-shadow:0_0_0.3px_currentColor]";
-                        }
-                    } else { // 10 pts (Best)
-                        if(isSelected) {
-                            activeClass = "bg-[#F0FDFA] ring-inset ring-2 ring-[#00FDCF] z-10";
-                            fontClass = "text-[#0D3A38] [text-shadow:0_0_0.3px_currentColor]"; 
-                        }
-                    }
+                    const baseClass = "bg-[#FAFAFA] border-[#EEEEEE] text-[#1B1B1B]/80 hover:bg-white hover:border-[#1B1B1B]/30 hover:shadow-sm";
                     
+                    let activeClass = "";
+                    if (idx === 0) activeClass = "bg-red-50 border-red-700 text-red-900 shadow-sm transform scale-[1.01]";
+                    else if (idx === 1) activeClass = "bg-orange-50 border-orange-700 text-orange-900 shadow-sm transform scale-[1.01]";
+                    else if (idx === 2) activeClass = "bg-yellow-50 border-yellow-600 text-yellow-900 shadow-sm transform scale-[1.01]";
+                    else if (idx === 3) activeClass = "bg-[#F0FDF4] border-[#0D3A38] text-[#0D3A38] shadow-sm transform scale-[1.01]";
+                    else if (idx === 4) activeClass = "bg-[#00FDCF] border-[#0D3A38] text-[#0D3A38] shadow-sm transform scale-[1.01]";
+
+                    const combinedClass = isSelected ? activeClass : baseClass;
                     const formattedOpt = parseMarkdownLinks(opt);
                     
                     optionsHTML += `
                         <div 
                             onclick="handleAnswer('${q.id}', ${points})"
-                            class="relative px-5 py-5 cursor-pointer transition-all duration-200 border-b lg:border-b-0 border-[#EEEEEE] last:border-b-0 lg:border-r lg:last:border-r-0 hover:bg-[#FAFAFA] flex flex-col justify-start ${roundedClass} ${isSelected ? activeClass : 'opacity-80 hover:opacity-100'}"
+                            class="relative p-5 rounded-2xl cursor-pointer border-2 transition-all duration-200 flex flex-col justify-start ${combinedClass}"
                         >
-                            <div class="flex flex-row lg:flex-col items-center lg:items-start h-full">
-                                <p class="text-[13px] leading-snug font-medium transition-all duration-200 ${fontClass}">${formattedOpt}</p>
+                            <div class="text-[10px] font-bold uppercase tracking-widest mb-3 ${isSelected ? 'opacity-90' : 'opacity-60'}">
+                                ${appData.headers[idx]} <span class="ml-1">${points} pts</span>
                             </div>
+                            <p class="text-sm leading-snug font-semibold">${formattedOpt}</p>
                         </div>
                     `;
                 });
+                optionsHTML += '</div>';
 
-                gridDiv.innerHTML = questionCol + optionsHTML;
-                card.innerHTML = mobileHeader;
-                card.appendChild(gridDiv);
+                card.innerHTML = questionHTML + optionsHTML;
                 container.appendChild(card);
             });
         }
@@ -934,7 +863,7 @@
             tbody.innerHTML = '';
             
             const addRow = (k, v) => {
-                tbody.innerHTML += `<tr class="border-b border-[#EEEEEE] last:border-0 hover:bg-[#FAFAFA]"><td class="p-3 border-r border-[#EEEEEE] font-bold text-[#1B1B1B]/70">${k}</td><td class="p-3 text-[#1B1B1B] font-medium">${v}</td></tr>`;
+                tbody.innerHTML += `<tr class="border-b border-[#EEEEEE] last:border-0 hover:bg-[#FAFAFA]"><td class="p-4 border-r border-[#EEEEEE] font-bold text-[#1B1B1B]/80">${k}</td><td class="p-4 text-[#1B1B1B] font-medium">${v}</td></tr>`;
             };
 
             addRow("Project Name", state.projectName);
@@ -969,14 +898,12 @@
             const lines = raw.split('\n').map(l => l.trim()).filter(l => l);
             
             try {
-                // Dynamically detects Tab (\t) format pasted from spreadsheets, or falls back to comma
                 const parseLine = (l) => {
                     const delimiter = l.includes('\t') ? '\t' : ',';
                     const parts = l.split(delimiter);
                     return [parts[0] ? parts[0].trim() : "", parts[1] ? parts[1].trim() : ""];
                 };
                 
-                // Assuming strict 6 row header format
                 document.getElementById('setupProject').value = parseLine(lines[0])[1] || "";
                 document.getElementById('setupGate').value = parseLine(lines[1])[1] || "";
                 
@@ -985,7 +912,7 @@
                 
                 const portVal = parseLine(lines[3])[1] || "";
                 document.getElementById('portfolioSelect').value = portVal;
-                handlePortfolioChange(); // Trigger cascade to populate Product Types
+                handlePortfolioChange(); 
                 
                 const prodVal = parseLine(lines[4])[1] || "";
                 document.getElementById('productTypeSelect').value = prodVal;
@@ -995,10 +922,8 @@
                 else if(batStr === 'FALSE') setBattery(false);
                 else setBattery(null);
 
-                // Re-sync basic state logic
                 handleSetupChange();
 
-                // Load answers (Lines 7+)
                 state.answers = {};
                 for(let i = 7; i < lines.length; i++) {
                     const parts = parseLine(lines[i]);
@@ -1020,7 +945,6 @@
             const modal = document.getElementById('dataModal');
             const content = document.getElementById('dataModalContent');
             modal.classList.remove('hidden');
-            // Trigger animation frame
             requestAnimationFrame(() => {
                 modal.classList.remove('opacity-0');
                 content.classList.remove('scale-95');
@@ -1050,7 +974,6 @@
             const modal = document.getElementById('confirmModal');
             const content = document.getElementById('confirmModalContent');
             modal.classList.remove('hidden');
-            // Trigger animation frame
             requestAnimationFrame(() => {
                 modal.classList.remove('opacity-0');
                 content.classList.remove('scale-95');
@@ -1065,6 +988,36 @@
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 200);
+        }
+
+        function closeSplashModal() {
+            const modal = document.getElementById('splashModal');
+            const content = document.getElementById('splashModalContent');
+            modal.classList.add('opacity-0');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+
+                // Apply pulse effect to the entire setup container
+                const setupContainer = document.getElementById('setupContainer');
+                if (setupContainer) {
+                    setupContainer.classList.add('ring-4', 'ring-[#00FDCF]/50', 'ring-offset-4', 'ring-offset-white');
+                }
+                
+                // Remove the glow after 1.5 seconds and THEN auto-focus
+                setTimeout(() => {
+                    if (setupContainer) {
+                        setupContainer.classList.remove('ring-4', 'ring-[#00FDCF]/50', 'ring-offset-4', 'ring-offset-white');
+                    }
+                    
+                    // Focus the first input after the pulse disappears
+                    const setupProjectInput = document.getElementById('setupProject');
+                    if(setupProjectInput) {
+                        setupProjectInput.focus();
+                    }
+                }, 1500);
+
+            }, 300); // Waits for the modal to finish fading out before triggering
         }
 
     </script>
