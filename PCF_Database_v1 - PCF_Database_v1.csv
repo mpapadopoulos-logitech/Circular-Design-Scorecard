@@ -1,0 +1,366 @@
+Component_class,Component_category,Component_type,Emission_factor,Unit
+EE,Battery,"Alkaline, AA",0.08000000000,pcs
+EE,Battery,"Alkaline, AAA",0.03800000000,pcs
+EE,Battery,"Coin Cell, CR 2032",0.06800000000,pcs
+EE,Battery,"Coin Cell, Li-Ion CP 1254",0.03400000000,pcs
+EE,Battery,"Coin Cell, ML 2032",0.05100000000,pcs
+EE,Battery,"Li-Po, 1100mAh",0.57400000000,pcs
+EE,Battery,"Li-Po, 1100mAh, With PCR Cobalt",0.33100000000,pcs
+EE,Battery,"Li-Po, 125mAh",0.13200000000,pcs
+EE,Battery,"Li-Po, 125mAh, With PCR Cobalt",0.10100000000,pcs
+EE,Battery,"Li-Po, 1500mAh",0.83200000000,pcs
+EE,Battery,"Li-Po, 1500mAh, With PCR Cobalt",0.45200000000,pcs
+EE,Battery,"Li-Po, 150mAh",0.14400000000,pcs
+EE,Battery,"Li-Po, 150mAh, With PCR Cobalt",0.10800000000,pcs
+EE,Battery,"Li-Po, 240mAh",0.20200000000,pcs
+EE,Battery,"Li-Po, 240mAh, With PCR Cobalt",0.14300000000,pcs
+EE,Battery,"Li-Po, 2800mAh",1.38000000000,pcs
+EE,Battery,"Li-Po, 2800mAh, With PCR Cobalt",0.77100000000,pcs
+EE,Battery,"Li-Po, 3300mAh",1.82000000000,pcs
+EE,Battery,"Li-Po, 3300mAh, With PCR Cobalt",0.96800000000,pcs
+EE,Battery,"Li-Po, 430mAh",0.29500000000,pcs
+EE,Battery,"Li-Po, 430mAh, With PCR Cobalt",0.19100000000,pcs
+EE,Battery,"Li-Po, 500mAh",0.31200000000,pcs
+EE,Battery,"Li-Po, 500mAh, With PCR Cobalt",0.19100000000,pcs
+EE,Battery,"Li-Po, 50mAh",0.08800000000,pcs
+EE,Battery,"Li-Po, 50mAh, With PCR Cobalt",0.07500000000,pcs
+EE,Battery,"Ultimate Lithium, AA",0.26700000000,pcs
+EE,Cable,Cable PE (4.5 g/m),0.01571361100,m
+EE,Cable,Cable PTFE (3.0 g/m),0.02390000000,m
+EE,Cable,Cable PVC (16 g/m),0.06287835100,m
+EE,Cable,Cable PVC (4.5 g/m),0.01789359400,m
+EE,Cable,"Cable PVC, Braided (17.7 g/m)",0.07198000000,m
+EE,Cable,Cable TPE (16 g/m),0.06170000000,m
+EE,Cable,Cable TPE (4.5 g/m),0.01991250000,m
+EE,Cable,"Cable TPE, Braided (17.7 g/m)",0.07080000000,m
+EE,Cable,"Internal Cable,  HDPE  [Without Connector]",0.00569000000,g
+EE,Cable,"Internal Cable,  PET  [Without Connector]",0.00611000000,g
+EE,Cable,"Internal Cable,  PTFE  [Without Connector]",0.08050000000,g
+EE,Cable,"Internal Cable,  PVC  [Without Connector]",0.00566000000,g
+EE,Cable,"Internal Cable,  Rubber  [Without Connector]",0.00581000000,g
+EE,Cable,"Internal Cable,  TPU  [Without Connector]",0.00711000000,g
+EE,Connector,"Connector, Ferrite",0.01230000000,g
+EE,Connector,"Connector, LCP",0.01550000000,g
+EE,Connector,"Connector, PBT",0.01680000000,g
+EE,Connector,"Connector, PE",0.01330000000,g
+EE,Connector,"Connector, Polyamide6",0.01820000000,g
+EE,Connector,"Connector, Polyamide66",0.01730000000,g
+EE,Connector,"Connector, PVC",0.01260000000,g
+EE,Connector,"Connector, TPE",0.01570000000,g
+EE,Connector,"Connector, Unspecified Material",0.01730000000,g
+EE,Flexible PCB,"Membrane, 10% Ink",0.00000394000,mm^2
+EE,Flexible PCB,"Membrane, 20% Ink",0.00000533000,mm^2
+EE,Flexible PCB,"Membrane, 40% Ink",0.00000832000,mm^2
+EE,Flexible PCB,"Membrane, 60% Ink",0.00001120000,mm^2
+EE,LED,"LED, CSP/Mini, 0.4x0.75x0.15mm (0.45mg)",0.00079700000,pcs
+EE,LED,"LED, SMD, IR (2.2mg)",0.00039300000,pcs
+EE,LED,"LED, SMD, IR, 3.2x1.6x1.10mm (5.86mg)",0.00102000000,pcs
+EE,LED,"LED, SMD, RGB, 1x1mm (1.27mg)",0.00023400000,pcs
+EE,LED,"LED, SMD, RGB, 2.1x2.1mm (15.04mg)",0.00246000000,pcs
+EE,LED,"LED, SMD, RGB, 4.5x1mm (7.84mg)",0.00123000000,pcs
+EE,LED,"LED, SMD, Single Colour, 2.8x3.2mm (31.8mg)",0.00472000000,pcs
+EE,LED,"LED, SMD, Single Colour, 2.8x3.5mm (24mg)",0.00388000000,pcs
+EE,LED,"LED, THT/Lamp, IR, 5mm (300mg)",0.01660000000,pcs
+EE,LED,"LED, THT/Lamp, RGB, 5mm (310.53mg)",0.01730000000,pcs
+EE,Microphone,Microphone,0.04400000000,g
+EE,Motor,Motor,0.00946000000,g
+EE,Passives,"Capacitor,  Aluminium,  DIP",0.06500000000,g
+EE,Passives,"Capacitor,  Aluminium,  SMD",0.08130000000,g
+EE,Passives,"Capacitor,  Film Type,  THT",0.04990000000,g
+EE,Passives,"Capacitor,  MLCC,  SMD",0.08130000000,g
+EE,Passives,"Capacitor,  Tantalum,  SMD",0.16100000000,g
+EE,Passives,Crystal,0.06380000000,g
+EE,Passives,"Diodes,  Power,  SMD",0.26600000000,g
+EE,Passives,"Diodes,  Power,  THT",0.26400000000,g
+EE,Passives,"Diodes,  Signal,  SMD",0.26600000000,g
+EE,Passives,Filter,1.27000000000,g
+EE,Passives,"Inductor,  Coil Miniature Wound",0.10300000000,g
+EE,Passives,"Inductor,  Coil Miniature Wound SRP",0.04680000000,g
+EE,Passives,"Inductor,  Multilayer",0.04280000000,g
+EE,Passives,"Inductor,  Quad Choke",0.04680000000,g
+EE,Passives,"Inductor,  Ring Core Coil",0.04680000000,g
+EE,Passives,Potentiometer,0.03630000000,g
+EE,Passives,"Resistor,  Thick Film",0.05680000000,g
+EE,Passives,"Resistor,  THT",0.03490000000,g
+EE,Passives,"Resistor,  Unknown Package",0.05680000000,g
+EE,Passives,Thermistor,0.05680000000,g
+EE,Passives,"Varistor,  THT",0.05680000000,g
+EE,Rigid PCB,"PCB, 1 layer, 0.8 mm",0.00007550000,mm^2
+EE,Rigid PCB,"PCB, 1 layer, 1.6 mm",0.00008440000,mm^2
+EE,Rigid PCB,"PCB, 12 layers, PTH, 0.8 mm",0.00035260000,mm^2
+EE,Rigid PCB,"PCB, 12 layers, PTH, 1.2 mm",0.00035720000,mm^2
+EE,Rigid PCB,"PCB, 12 layers, PTH, 1.6 mm",0.00036170000,mm^2
+EE,Rigid PCB,"PCB, 2 layers, CPTH, 0.8 mm",0.00008233000,mm^2
+EE,Rigid PCB,"PCB, 2 layers, CPTH, 1.2 mm",0.00008594000,mm^2
+EE,Rigid PCB,"PCB, 2 layers, CPTH, 1.6 mm",0.00008963000,mm^2
+EE,Rigid PCB,"PCB, 2 layers, PTH, 0.8 mm",0.00010040000,mm^2
+EE,Rigid PCB,"PCB, 2 layers, PTH, 1.2 mm",0.00010480000,mm^2
+EE,Rigid PCB,"PCB, 2 layers, PTH, 1.6 mm",0.00010930000,mm^2
+EE,Rigid PCB,"PCB, 4 layers, PTH, 0.8 mm",0.00015090000,mm^2
+EE,Rigid PCB,"PCB, 4 layers, PTH, 1.2 mm",0.00015550000,mm^2
+EE,Rigid PCB,"PCB, 4 layers, PTH, 1.6 mm",0.00016000000,mm^2
+EE,Rigid PCB,"PCB, 6 layers, PTH, 0.8 mm",0.00020130000,mm^2
+EE,Rigid PCB,"PCB, 6 layers, PTH, 1.2 mm",0.00020590000,mm^2
+EE,Rigid PCB,"PCB, 6 layers, PTH, 1.6 mm",0.00021040000,mm^2
+EE,Rigid PCB,"PCB, 8 layers, PTH, 0.8 mm",0.00025180000,mm^2
+EE,Rigid PCB,"PCB, 8 layers, PTH, 1.2 mm",0.00025630000,mm^2
+EE,Rigid PCB,"PCB, 8 layers, PTH, 1.6 mm",0.00026090000,mm^2
+EE,Solder,Solder Paste,0.02890000000,g
+EE,Switch,Dip Switch (79mg),0.00060734900,pcs
+EE,Switch,"Mechanical Switch, High Profile, Hot Swappable, With Socket",0.00897000000,pcs
+EE,Switch,"Mechanical Switch, Low Profile, No Lightguide",0.00512000000,pcs
+EE,Switch,"Mechanical Switch, Standard High Profile, Lightguide",0.00916000000,pcs
+EE,Switch,"Mechanical Switch, Standard High Profile, No Lightguide",0.00781000000,pcs
+EE,Switch,Tact Switch (242mg),0.00170407300,pcs
+ME,ABS,100% PCR ABS  (PCR>97%),0.00283930000,g
+ME,ABS,35% PCR ABS,0.00551000000,g
+ME,ABS,50% PCR ABS,0.00487000000,g
+ME,ABS,50% PCR ABS (2% PET Fiber),0.00481900000,g
+ME,ABS,65% PCR ABS,0.00422000000,g
+ME,ABS,85% PCR ABS,0.00336000000,g
+ME,ABS,95% PCR ABS,0.00292550000,g
+ME,ABS,ABS,0.00702000000,g
+ME,ABS,ABS (2% PET Fiber),0.00692600000,g
+ME,Aluminium,ADC-12  [Die-casting],0.01923100000,g
+ME,Aluminium,ADC-12 (60% Recycled)  [Die-casting],0.01383100000,g
+ME,Aluminium,ADC-12 (65% Recycled)  [Die-casting],0.01266100000,g
+ME,Aluminium,ADC-12 (75% Recycled )  [Die-casting],0.01031100000,g
+ME,Aluminium,ADC-12 (80% Recycled)  [Die-casting],0.00914100000,g
+ME,Aluminium,ADC-12 (85% Recycled)  [Die-casting],0.00797100000,g
+ME,Aluminium,Al 5052 Low Carbon  [Stamping],0.00700400000,g
+ME,Aluminium,Al 5052 Regular  [Stamping],0.02677400000,g
+ME,Aluminium,Al 6061 Low Carbon  [Stamping],0.00678400000,g
+ME,Aluminium,Al 6061 Regular  [Stamping],0.02656400000,g
+ME,Aluminium,Al 6063 Low Carbon  [CNC],0.00628800000,g
+ME,Aluminium,Al 6063 Low Carbon  [Extrusion],0.00661400000,g
+ME,Aluminium,Al 6063 Regular  [CNC],0.02605800000,g
+ME,Aluminium,Al 6063 Regular  [Extrusion],0.02638400000,g
+ME,Copper,Brass  [Turning],0.01590000000,g
+ME,Copper,Copper Foil,0.00891000000,g
+ME,Copper,Copper Sheet,0.00960000000,g
+ME,Copper,Copper Wire,0.00806550000,g
+ME,Copper,Copper Wire (100% Recycled),0.00141570000,g
+ME,Copper,Copper Wire (50% Recycled),0.00474060000,g
+ME,Copper,Copper Wire (95% Recycled),0.00174819000,g
+ME,Elastomers,30% PCR TPU  [Injection],0.00493000000,g
+ME,Elastomers,Silicone Rubber,0.00550000000,g
+ME,Elastomers,TPU  [Injection],0.00592000000,g
+ME,Foam,Compressed Cork,0.00128000000,g
+ME,Foam,EPE Foam,0.00403000000,g
+ME,Foam,EVA Foam,0.00430000000,g
+ME,Foam,Natural Rubber,0.00273717400,g
+ME,Foam,PU Foam,0.00728000000,g
+ME,Foot Pad,HDPE Pad,0.00342891380,g
+ME,Foot Pad,PTFE Pad,0.14600000000,g
+ME,Foot Pad,Silicone Rubber Pad,0.00550000000,g
+ME,Foot Pad,TPU Pad,0.00592000000,g
+ME,Glass/Ceramic,Glass,0.00455000000,g
+ME,HIPS,100% PCR HIPS  (PCR>97%),0.00281050000,g
+ME,HIPS,65% PCR HIPS,0.00388250000,g
+ME,HIPS,75% PCR HIPS,0.00355000000,g
+ME,HIPS,85% PCR HIPS,0.00322000000,g
+ME,HIPS,95% PCR HIPS,0.00287750000,g
+ME,HIPS,HIPS,0.00606000000,g
+ME,Others,100% PCR Magnet NdFeB,0.05952000000,g
+ME,Others,FRP PA 66 (30% GF),0.00914200000,g
+ME,Others,Magnet NdFeB,0.06206000000,g
+ME,Others,"PA 66, Nylon 66",0.01120000000,g
+ME,Others,PBT,0.00773000000,g
+ME,Others,PMMA,0.00873000000,g
+ME,Others,POM,0.00527000000,g
+ME,Others,POM + 20% GF,0.00508400000,g
+ME,Others,Zinc  [Casting],0.00266000000,g
+ME,PC,100% PCR PC  (PCR>97%),0.00288730000,g
+ME,PC,30% PCR PC,0.00684000000,g
+ME,PC,35% PCR PC,0.00655150000,g
+ME,PC,50% PCR PC,0.00566500000,g
+ME,PC,65% PCR PC,0.00546000000,g
+ME,PC,70% PCR PC,0.00448000000,g
+ME,PC,85% PCR PC,0.00359650000,g
+ME,PC,90% PCR PC,0.00330000000,g
+ME,PC,PC,0.00862000000,g
+ME,PC,PC/GF (7:3),0.00733600000,g
+ME,PC/ABS,30% PCR PC/ABS,0.00652700000,g
+ME,PC/ABS,35% PCR PC/ABS + 15% GF,0.00574950000,g
+ME,PC/ABS,50% PCR PC/ABS,0.00558500000,g
+ME,PC/ABS,50% PCR PC/ABS + 15% GF,0.00494300000,g
+ME,PC/ABS,65% PCR PC/ABS,0.00445850000,g
+ME,PC/ABS,75% PCR PC/ABS,0.00410750000,g
+ME,PC/ABS,85% PCR PC/ABS,0.00351650000,g
+ME,PC/ABS,PC/ABS (6:4),0.00798000000,g
+ME,PC/ABS,PC/ABS (7:3),0.00814000000,g
+ME,PC/ABS,PC/ABS (8:2),0.00830000000,g
+ME,PC/ABS,PC/ABS + 15% GF,0.00757800000,g
+ME,PE,80% PCR HDPE Film,0.00173748490,g
+ME,PE,HDPE Film,0.00342891380,g
+ME,PET,100% rPET  (PCR>97%),0.00279910000,g
+ME,PET,100% rPET Sheet  (PCR>97%),0.00164540000,g
+ME,PET,30% rPET,0.00478900000,g
+ME,PET,40% rPET,0.00449200000,g
+ME,PET,40% rPET Sheet,0.00345800000,g
+ME,PET,50% rPET,0.00419500000,g
+ME,PET,PET,0.00568000000,g
+ME,PET,PET Sheet,0.00473000000,g
+ME,PP,65% PCR PP Film,0.00254555500,g
+ME,PP,PP,0.00430683230,g
+ME,PP,PP Film,0.00365312920,g
+ME,Stainless Steel,"Stainless Steel, Generic  [Deep Drawing]",0.01327200000,g
+ME,Stainless Steel,"Stainless Steel, Generic  [Stamping, Bending]",0.00854800000,g
+ME,Stainless Steel,"Stainless Steel, Generic  [Turning]",0.01090200000,g
+ME,Stainless Steel,SUS 304  [Deep Drawing],0.00930600000,g
+ME,Stainless Steel,"SUS 304  [Stamping, Bending]",0.00594800000,g
+ME,Stainless Steel,SUS 304  [Turning],0.00785300000,g
+ME,Stainless Steel,SUS 316  [Deep Drawing],0.01327200000,g
+ME,Stainless Steel,"SUS 316  [Stamping, Bending]",0.00854800000,g
+ME,Stainless Steel,SUS 316  [Turning],0.01090200000,g
+ME,Stainless Steel,SUS 430  [Deep Drawing],0.00510600000,g
+ME,Stainless Steel,"SUS 430  [Stamping, Bending]",0.00319500000,g
+ME,Stainless Steel,SUS 430  [Turning],0.00462400000,g
+ME,Steel,"50% PCR SGCC  [Stamping, Bending] [EAF]",0.00324000000,g
+ME,Steel,"95% PCR SGCC  [Stamping, Bending]",0.00168000000,g
+ME,Steel,Screw,0.00777000000,g
+ME,Steel,SECC  [Deep Drawing],0.00484000000,g
+ME,Steel,"SECC  [Stamping, Bending]",0.00392000000,g
+ME,Steel,SECC  [Turning],0.00448000000,g
+ME,Steel,SGCC  [Deep Drawing],0.00491500000,g
+ME,Steel,"SGCC  [Stamping, Bending] [BOF]",0.00352000000,g
+ME,Steel,SGCC  [Turning],0.00455500000,g
+ME,Steel,SGLCC  [Deep Drawing],0.00518300000,g
+ME,Steel,"SGLCC  [Stamping, Bending]",0.00368000000,g
+ME,Steel,SGLCC  [Turning],0.00482300000,g
+ME,Steel,SPCC  [Deep Drawing],0.00458100000,g
+ME,Steel,"SPCC  [Stamping, Bending]",0.00312000000,g
+ME,Steel,SPCC  [Turning],0.00422000000,g
+ME,Steel,Steel wire,0.00576000000,g
+ME,Steel,"Steel, Generic  [Deep Drawing]",0.00518300000,g
+ME,Steel,"Steel, Generic  [Stamping, Bending]",0.00345300000,g
+ME,Steel,"Steel, Generic  [Turning]",0.00482300000,g
+ME,Surface Treatment,"Aluminum Anodization, Keyboard Top Cases",0.00000490000,mm2
+ME,Surface Treatment,"Aluminum Anodization, Simulation Racing",0.00000878000,mm2
+ME,Surface Treatment,"Painting, Generic  [Process Only]",0.95040678482,kWh
+ME,Surface Treatment,"Painting, Generic  [Without Process]",0.00413823121,g
+ME,Surface Treatment,"Powder Coating, Aluminium",0.00000329489,mm2
+ME,Surface Treatment,"Powder Coating, Steel",0.00000368457,mm2
+ME,Textile,100% rPET Fibre  (PCR>97%),0.00157310000,g
+ME,Textile,Animal Leather (0.16 g/cm2),0.00149000000,cm2
+ME,Textile,PA 66 (Nylon 66) Fibre,0.00891000000,g
+ME,Textile,PET Fibre,0.00232000000,g
+ME,Textile,PP Fibre,0.00426770750,g
+ME,Textile,"PU Leather, SB  (0.08 g/cm2)",0.00130000000,cm2
+ME,Textile,"PU Leather, SB, with rPET  (0.08 g/cm2)",0.00124000000,cm2
+ME,Textile,"PU Leather, WB  (0.0335 g/cm2)",0.00029000000,cm2
+ME,Textile,"PU Leather, WB, with rPET  (0.0335 g/cm2)",0.00025000000,cm2
+ME,Textile,Silicone Leather  (0.0831 g/cm2),0.00072000000,cm2
+ME,Textile,"Silicone Leather, with rPET  (0.0831 g/cm2)",0.00065000000,cm2
+ME,Receiver / Dongle,"Bolt, Bazooka 2  (C-U0025) (3.15g)",0.60363000000,pcs
+ME,Receiver / Dongle,"Bolt, Mezzi (C-U0021) (1.85g)",0.33000000000,pcs
+ME,Receiver / Dongle,"Dagger, Gizmo (C-U0010) (1.78g)",0.26000000000,pcs
+ME,Receiver / Dongle,"Dagger, Lantau (C-U0011) (5.64g)",0.75000000000,pcs
+ME,Receiver / Dongle,"LS1, Gravity (C-U0018) (2.34g)",0.46000000000,pcs
+ME,Receiver / Dongle,"Telink, Palau (C-U0019) (1.80g)",0.34000000000,pcs
+ME,Receiver / Dongle,"Unifying, Lengo (C-U0012) (1.98g)",0.51000000000,pcs
+ME,Receiver / Dongle,"Unifying, Samui (C-U0007) (1.88g)",0.35000000000,pcs
+ME,Receiver / Dongle,"Unifying, Stalker (C-U0008) (1.45g)",0.29000000000,pcs
+ME,Speaker Driver,Speaker Driver,0.00923362980,g
+ME,Wheel (Mice),1D Mechnical Encoder (3.41g),0.01767034000,pcs
+ME,Wheel (Mice),1D Roller 2 (4.81g),0.13892871000,pcs
+ME,Wheel (Mice),1D Roller 7 (3.31g),0.14187081000,pcs
+ME,Wheel (Mice),2D Micro Ratchet (8.02g),0.16751647000,pcs
+ME,Wheel (Mice),3G Core (17.27g),0.21190077000,pcs
+ME,Wheel (Mice),3G Mini (10.27g),0.13484965000,pcs
+ME,Wheel (Mice),EPM Wheel (20mm) (12.28g),0.21000000000,pcs
+ME,Wheel (Mice),EPM Wheel (25mm) (23.22g),0.23700000000,pcs
+ME,Wheel (Mice),Magnetic Wheel (6.31g),0.35400000000,pcs
+Packaging,Cloth,Nylon,0.012287,g
+Packaging,Cloth,Cotton,0.01407,g
+Packaging,Label,Adhesive + PET,0.005991,g
+Packaging,Label,Adhesive + Artpaper,0.004681,g
+Packaging,Label,Adhesive + Synthetic paper,0.006069,g
+Packaging,Label,Adhesive + Cellulose paper,0.00648,g
+Packaging,Paper,Wood fiber,0.003196,g
+Packaging,Paper,Wood fiber double layer,0.0036754,g
+Packaging,Paper,Tissue paper,0.0049,g
+Packaging,Paper,Cellulose paper,0.00621,g
+Packaging,Paper,Artpaper,0.004457,g
+Packaging,Paper,CCNB paper,0.004142,g
+Packaging,Paper,LWC paper,0.004819,g
+Packaging,Paper,Kraft paper,0.003617,g
+Packaging,Paper,SBS paper,0.00422,g
+Packaging,Paper,Black paper,0.003643,g
+Packaging,Paper,Recycled paper,0.003933,g
+Packaging,Paper,Greyboard paper,0.003805,g
+Packaging,Paper,Greyboard + Artpaper,0.008262,g
+Packaging,Paper,Greyboard + SBS,0.008025,g
+Packaging,Paper,Paper padded bag,0.004819,g
+Packaging,Corrugated,"F-flute-CCNB outside liner, Kraft inside liner",0.00387,g
+Packaging,Corrugated,"E-flute-CCNB outside liner, Kraft inside liner",0.00387,g
+Packaging,Corrugated,"E-flute-CCNB outside liner, Bleached kraft inside liner",0.0039,g
+Packaging,Corrugated,"E-flute-CCNB outside liner, Black inside liner (kraft liner, flood print)",0.00393,g
+Packaging,Corrugated,"E-flute-SBS outside liner, Kraft inside liner",0.00385,g
+Packaging,Corrugated,"E-flute-SBS outside liner, Bleached kraft inside liner",0.00387,g
+Packaging,Corrugated,"E-flute-SBS outside liner, Black kraft inside liner",0.00391,g
+Packaging,Corrugated,"E-Flute-Bleached kraft outside liner, Kraft inside liner",0.00364,g
+Packaging,Corrugated,"E-Flute-Bleached kraft outside liner, Bleached Kraft inside liner",0.00366,g
+Packaging,Corrugated,"E-Flute-Kraft outside liner, Kraft inside liner",0.00362,g
+Packaging,Corrugated,"E-Flute-Black Kraft outside liner, Black kraft inside liner",0.00373,g
+Packaging,Corrugated,"E-Flute-Black Kraft outside liner, Kraft inside liner",0.0037,g
+Packaging,Corrugated,"B-Flute-CCNB outside liner, Kraft inside liner",0.00393,g
+Packaging,Corrugated,"B-Flute-CCNB outside liner, Bleached kraft inside liner",0.00395,g
+Packaging,Corrugated,"B-Flute-CCNB outside liner, Black kraft inside liner",0.00399,g
+Packaging,Corrugated,"B-Flute-Kraft outside liner, Kraft inside liner",0.00367,g
+Packaging,Corrugated,"B-Flute-Black kraft outside liner, Kraft inside liner",0.00375,g
+Packaging,Corrugated,"B-Flute-Black kraft outside liner, Black kraft inside liner",0.00379,g
+Packaging,Corrugated,"C-Flute-CCNB outside liner, Kraft inside liner",0.004,g
+Packaging,Corrugated,"C-Flute-Kraft outside liner, Kraft inside liner",0.00373,g
+Packaging,Corrugated,"BC Flute-Kraft outside liner, Kraft inside liner",0.00421,g
+Packaging,Corrugated,"AB-Flute-Kraft outside liner, Kraft inside liner",0.00425,g
+Packaging,Paper,Molded pulp - Natural (Wet press/Bamboo/Bagasse),0.00363,g
+Packaging,Paper,Molded pulp - Natural (Semi-wet press/Bamboo/Bagasse),0.005421,g
+Packaging,Paper,Molded pulp - Dyed (Wet press/Bamboo/Bagasse),0.003658,g
+Packaging,Paper,Molded pulp - Dyed (Semi-wet press/Bamboo/Bagasse),0.005449,g
+Packaging,Paper,Molded pulp - Bleached (Wet press/Bamboo/Bagasse),0.003845,g
+Packaging,Paper,Molded pulp - Bleached (Semi-wet press/Bamboo/Bagasse),0.005636,g
+Packaging,Paper,Starch tray - Natural,0.004588,g
+Packaging,Paper,Starch tray - Dyed,0.004616,g
+Packaging,Paper,Starch tray - Bleached,0.004803,g
+Packaging,Plastic,"Spunlace (plastic PP, PET, PS) cloth",0.00541,g
+Packaging,Plastic,"Spunlace black (plastic PP, PET, PS) cloth",0.005779,g
+Packaging,Plastic,"Non woven fabric (plastic PP, PET, PS) cloth",0.005609,g
+Packaging,Plastic,LDPE foam bag,0.00962,g
+Packaging,Plastic,RPET - 30% - Uncolored-sealed,0.006441,g
+Packaging,Plastic,RPET - 30% - Uncolored,0.006408,g
+Packaging,Plastic,RPET - 30% - White,0.006557,g
+Packaging,Plastic,RPET - 30% - Black,0.006779,g
+Packaging,Plastic,PETGAG,0.006639,g
+Packaging,Plastic,PET - A,0.006887,g
+Packaging,Plastic,PET - Sealed,0.006977,g
+Packaging,Plastic,PET - Black,0.007225,g
+Packaging,Plastic,PET - White,0.007003,g
+Packaging,Plastic,PS - White,0.007557,g
+Packaging,Plastic,PS - Black,0.007779,g
+Packaging,Plastic,PETGAG - Sealed,0.0067,g
+Packaging,Plastic,PE - white,0.007016,g
+Packaging,Plastic,PE - black,0.006431,g
+Packaging,Plastic,PE - clear,0.005609,g
+Packaging,Plastic,PP - White,0.006167,g
+Packaging,Plastic,PP - Black,0.006389,g
+Packaging,Plastic,PP - Uncolored,0.006018,g
+Packaging,Plastic,PE-C (CPE),0.005651,g
+Packaging,Plastic,PE-C (CPE) - Gray,0.007673,g
+Packaging,Plastic,BOPP,0.00742,g
+Packaging,Plastic,POF shrink film,0.006454,g
+Packaging,Plastic,Synthetic paper,0.006015,g
+Packaging,Plastic,EVA - White,0.006052,g
+Packaging,Plastic,EVA - Black,0.006274,g
+Packaging,Plastic,EPE - White,0.006222,g
+Packaging,Plastic,EPE - Black,0.006444,g
+Packaging,Plastic,EPU - Black,0.008501,g
+Packaging,Plastic,EPU - White,0.008279,g
+Packaging,Plastic,EPS - White,0.007366,g
+Packaging,Plastic,EPS - Black,0.007588,g
+Packaging,Plastic,EPP - Black,0.0062,g
+Packaging,Plastic,PE Foam,0.00611,g
+Packaging,Plastic,LDPE Foam,0.005961,g
+Packaging,Plastic,HDPE Foam,0.005902,g
+Packaging,Plastic,PET plastic box assembled,0.006887,g
+Packaging,Metal,Magnet - Neodymium Iron Boron,0.06206,g
